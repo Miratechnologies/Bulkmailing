@@ -1,0 +1,15 @@
+
+.selectable:hover {
+   border: 1px dashed rgb(0, 135, 40);
+   padding: 5px;
+}
+
+.selectable-content:hover {
+   border: 1px dashed rgb(248, 3, 3);
+   padding: 5px;
+   /* align */
+}
+
+.selected {
+   border: 1px solid rgb(0, 135, 40);
+}
