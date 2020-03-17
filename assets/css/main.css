@@ -1,0 +1,53 @@
+/* Custom css codes */
+
+.obejor-bg-dark {
+   background-color: rgb(235, 68, 8);
+}
+
+.obejor-bg-light {
+   background-color: rgb(236, 124, 83);
+}
+
+.obejor-text-dark {
+   color: rgb(235, 68, 8);
+}
+
+.obejor-text-light {
+   color: rgb(236, 124, 83);
+}
+
+.cursor-pointer {
+   cursor: pointer;
+}
+
+.cursor-notAllowed {
+   cursor: not-allowed;
+}
+
+.text-sm {
+   font-size: 0.875rem !important;
+}
+
+.text-md {
+   font-size: 1.0625rem !important;
+}
+
+.text-lg {
+   font-size: 1.25rem !important;
+}
+
+.triangle-right {
+   width: 0;
+   height: 0;
+   border-top: 30px solid transparent !important;
+   border-left: 40px solid green !important;
+   border-bottom: 30px solid transparent !important;
+}
+
+.scrollable {
+   overflow-y: auto !important;
+}
+
+.scrollable-x {
+   overflow-x: auto !important;
+}
