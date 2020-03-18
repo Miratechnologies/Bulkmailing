@@ -34,7 +34,7 @@ if (isset($inputs['forgot'])) {
 
 		$sender = 'bulk@nglohitech.com';
 		// send token to the user's email address
-		mail($email, 'Password Reset Token', "Please use to the token below to verify your account.\r\n<h2>{$token}</h2>", 'From:'.$sender);
+		mail($email, 'Password Reset Token', "Please use to the token below to verify your account.\r\n<b>{$token}</b>", 'From:'.$sender);
 		// send email
 
 		// redirect to the token verification page
