@@ -157,6 +157,15 @@ function get_client_ip() {
 						</div>
 						";
 					}
+
+					if (isset($_GET['succmsg']) == true) {
+						echo "
+						<div class='alert alert-success alert-dismissible fade show'>
+							<button type='button' class='close alert-dismissible' data-dismiss='alert'>&times;</button>
+							<strong>Success!</strong> {$_GET['succmsg']}.
+						</div>
+						";
+					}
 				?>
 
 				<form method="POST" action="index.php" autocomplete="off">
@@ -191,6 +200,8 @@ function get_client_ip() {
 						<button type="submit" name="auth" class="btn btn-dark d-block mx-auto mt-3">
 							Login <i class="fa fa-lg fa-sign-in"></i>
 						</button>
+
+						<p class="text-center mt-3"><a class="text-dark" href="forgot.php">Forgot Password</a></p>
 					</div>
 				</form>
 
