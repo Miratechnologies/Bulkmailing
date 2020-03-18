@@ -51,7 +51,7 @@ if (isset($inputs['save_user'])) {
 	function hashPassword($password){
       $options = [
          'cost' => 10,
-         'salt' => random_bytes(22),
+         'salt' => openssl_random_pseudo_bytes(22),
       ];
    
       $password =  password_hash($password, PASSWORD_BCRYPT, $options);
