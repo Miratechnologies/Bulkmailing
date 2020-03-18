@@ -1,1 +1,2 @@
-scripts/dbconnection.php
+scripts/dbconnections.php
+vendor/

@@ -333,6 +333,40 @@ class DBModel extends DBConnection{
         }
     }
 
+    public function updateUserToken($email,$token) {
+        $sql = "UPDATE auth_tbl SET token = $token WHERE email = '$email'";
+        // $res = $this->conn->prepare($sql);
+        // $res->bind_param("s",$token);
+        // $res = $res->execute();
+        mysqli_query($this->conn, $sql);
+        if (mysqli_affected_rows($this->conn) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function verifyToken($email,$token) {
+        $sql = "SELECT * FROM auth_tbl WHERE email = '$email' AND token = '$token'";
+        $res = mysqli_query($this->conn, $sql);
+        // die(json_encode(mysqli_num_rows($res)));
+        if (mysqli_num_rows($res) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function updatePassword($email,$password) {
+        $sql = "UPDATE auth_tbl SET password = '$password' WHERE email = '$email'";
+        mysqli_query($this->conn, $sql);
+        if (mysqli_affected_rows($this->conn) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     // preference_tbl
     public function addNewPreference($preference, $options, $value) {
         $sql = "INSERT INTO preference_tbl(preference, options, value) VALUES (?,?,?)";
