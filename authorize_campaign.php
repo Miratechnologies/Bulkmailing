@@ -7,7 +7,7 @@ include_once 'scripts/restrict_admin.php';
 include 'scripts/dbmodel.php';
 $model = new DBModel();
 
-$_SESSION['USER.ACTIVITY'][] = "scheduled list - " . date("d/m/Y h:i a");
+$_SESSION['USER.ACTIVITY'][] = "authorize campaigns - " . date("d/m/Y h:i a");
 include 'scripts/log.php';
 
 $mails = $model->getAllPendingEmailCampaign();
@@ -102,11 +102,11 @@ if ($mails['flag'] == true) {
 										// if status is active
 										if ($mail['status'] == "Pending") {
 											// it can be set to cancel the schedule
-											$action = "<button class='btn btn-sm obejor-bg-dark text-light' onclick=\"location.href='scripts/send_mail.php?id={$mail['mail_id']}&status=Authorize'\">Authorize</button>";
+											$action = "<button class='btn btn-sm obejor-bg-dark text-light' onclick=\"location.href='scripts/send_mail.php?action=send&id={$mail['mail_id']}&status=Authorize'\">Authorize</button>";
 										}
 										// else the status is now either SENT or EXPIRED, hence no action
 										else {
-											$action = "<button class='btn btn-sm obejor-bg-dark text-light' onclick=\"location.href='scripts/send_mail.php?id={$mail['mail_id']}&status=Reject'\">Reject</button>";
+											$action = "<button class='btn btn-sm obejor-bg-dark text-light' onclick=\"location.href='scripts/send_mail.php?action=send&id={$mail['mail_id']}&status=Reject'\">Reject</button>";
 										}
 
 										echo "<tr class='text-dark'>

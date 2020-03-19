@@ -466,6 +466,18 @@ class DBModel extends DBConnection{
         }
     }
 
+    public function getThisEmailCampaign($id){
+        $sql = "SELECT * FROM mails_tbl WHERE mail_id = $id ";
+        $res = $this->conn->query($sql);
+        if ($res->num_rows > 0) {
+            $data = $res->fetch_all(MYSQLI_ASSOC);
+            return ["flag"=>true,"data"=>$data];
+        } else {
+            $data = mysqli_error($this->conn);
+            return ["flag"=>false,"data"=>$data];
+        }
+    }
+
     // scheduler_tbl
     public function addNewScheduler($subject, $sender, $recipients, $body, $date, $time) {
         $sql = "INSERT INTO scheduler_tbl(subject, sender, recipients, body, schedule_date, schedule_time) VALUES (?,?,?,?,?,?)";
