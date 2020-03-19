@@ -465,9 +465,7 @@ class DBModel extends DBConnection{
             return ["flag"=>false,"data"=>$data];
         }
     }
-
-<<<<<<< Updated upstream
-=======
+    
     public function getThisEmailCampaign($id){
         $sql = "SELECT * FROM mails_tbl WHERE mail_id = $id ";
         $res = $this->conn->query($sql);
@@ -490,7 +488,6 @@ class DBModel extends DBConnection{
         }
     }
 
->>>>>>> Stashed changes
     // scheduler_tbl
     public function addNewScheduler($subject, $sender, $recipients, $body, $date, $time) {
         $sql = "INSERT INTO scheduler_tbl(subject, sender, recipients, body, schedule_date, schedule_time) VALUES (?,?,?,?,?,?)";

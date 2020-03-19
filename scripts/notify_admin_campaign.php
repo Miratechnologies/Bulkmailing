@@ -62,7 +62,7 @@ if(isset($_POST['send_email']))
 	$model = new DBModel();
 	$add = $model->addNewMailCampaign($subject, $sender, $recipientEmails, $body, "Pending"); # Authorized
 
-	if ($status == "OK" && $add['flag'] == true) {
+	if ($status == "OK" || $add['flag'] == true) {
 		exit(json_encode([
 			"flag"=>true
 		]));
