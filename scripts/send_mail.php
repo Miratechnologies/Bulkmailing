@@ -28,7 +28,7 @@ if (isset($_GET['send'])) {
 		$sender = $mail['data']['sender'];
 		$body = $mail['data']['body'];
 
-		die($recipients);
+		die($sender);
 
 		// initiate mailing
 		require '../vendor/PHPMailerClass/class.phpmailer.php';
