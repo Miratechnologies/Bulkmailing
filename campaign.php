@@ -70,10 +70,25 @@ include 'scripts/log.php';
 								<span class="obejor-text-dark text-lg">SCHEDULE EMAIL</span>
 							</div>
 
-							<div class="col-12 mx-auto border my-1 p-5 obejor-text-dark cursor-pointer" onclick="location.href='scheduledmails.php';">
-								<span class="fa fa-4x fa-list"></span> <br>
-								<span class="obejor-text-dark text-lg">SCHEDULED EMAIL LIST</span>
-							</div>
+							<?php
+								$role = $_SESSION['USER.ROLE'];
+
+								if ($role == "ADMIN") {
+									echo '
+									<div class="col-6 mx-auto border my -1 p-5 obejor-text-dark cursor-pointer" onclick="location.href=\'authorize_campaign.php\';">
+										<span class="fa fa-4x fa-check"></span> <br>
+										<span class="obejor-text-dark text-lg">AUTHORIZE CAMPAIGN</span>
+									</div>
+
+									<div class="col-6 mx-auto border my -1 p-5 obejor-text-dark cursor-pointer" onclick="location.href=\'scheduledmails.php\';">
+										<span class="fa fa-4x fa-list"></span> <br>
+										<span class="obejor-text-dark text-lg">SCHEDULED EMAIL LIST</span>
+									</div>
+									';
+								}
+							?>
+
+							
 
 						</div>
 
