@@ -16,7 +16,7 @@ if(isset($_POST['send_email']))
    ";
 
 	// collect all the recipients emails
-   $recipientEmail = json_encode($recipients);
+   $recipientEmails = json_encode($recipients);
    
    $admin = [
       ["email"=>"ebukaodini@gmail.com","name"=>"Developer Admin"],
@@ -57,13 +57,12 @@ if(isset($_POST['send_email']))
 	}
 
 	$mailType = "";
-	$recipientEmails = json_encode($recipientEmail);
 
 	include 'dbmodel.php';
 	$model = new DBModel();
 	$add = $model->addNewMailCampaign($subject, $sender, $recipientEmails, $body, "Pending"); # Authorized
 
-	if ($status == "OK" && $add['flag'] == true) {
+	if ($status == "OK" || $add['flag'] == true) {
 		exit(json_encode([
 			"flag"=>true
 		]));
