@@ -12,7 +12,7 @@ if(isset($_POST['send_email']))
    $body = $_POST['email_body'];
    $attachment = "
    \r\n\r\n
-   A new campaign with the subject <b>{$subject}</b> is about to go out.\r\nPlease Authourize this campaign.
+   <br>A new campaign with the subject <b>{$subject}</b> is about to go out.\r\nPlease Authourize this campaign.
    ";
 
 	// collect all the recipients emails
@@ -48,7 +48,7 @@ if(isset($_POST['send_email']))
 		//An HTML or plain text message body
 		$mail->Body = $body . $attachment;
 
-		$mail->AltBody = "A new campaign with the subject <b>{$subject}</b> is about to go out.\r\nPlease Authourize this campaign.";
+		$mail->AltBody = "<br>A new campaign with the subject <b>{$subject}</b> is about to go out.\r\nPlease Authourize this campaign.";
 
 		$result = $mail->Send();						//Send an Email. Return true on success or false on error
 

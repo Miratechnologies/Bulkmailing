@@ -444,7 +444,7 @@ class DBModel extends DBConnection{
     public function addNewMailCampaign($subject, $sender, $recipients, $body, $status) {
         $sql = "INSERT INTO mails_tbl(subject, sender, recipients, body, status) VALUES (?,?,?,?,?)";
         $res = $this->conn->prepare($sql);
-        $res->bind_param("ssss",$subject, $sender, $recipients, $body, $status);
+        $res->bind_param("sssss",$subject, $sender, $recipients, $body, $status);
         $res = $res->execute();
         if ($res) {
             $lastId = $this->conn->insert_id;
