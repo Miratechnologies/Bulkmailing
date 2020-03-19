@@ -234,7 +234,9 @@ function sendEmail() {
       email_body: CAMPAIGN_PARAMS.DRAFT_BODY,
    }
 
-   var url = "scripts/send_mail.php"
+   // URL to notify admin
+   var url = "scripts/notify_admin_campaign.php";
+   // var url = "scripts/send_mail.php";
 
    $("#sendBtn").html("<span class='fa fa-spin fa-spinner'></span> Sending...");
    $("#sendBtn").attr("disabled", false);
@@ -255,7 +257,7 @@ function sendEmail() {
          } else {
             $('#sendBtn').removeClass('obejor-btn-dark');
             $('#sendBtn').addClass('btn-danger');
-            $('#sendBtn').text(data);
+            $('#sendBtn').text(data.data);
          }
          $('#sendBtn').attr('disabled', false);
       }

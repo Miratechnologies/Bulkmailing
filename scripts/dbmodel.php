@@ -441,16 +441,28 @@ class DBModel extends DBConnection{
     }
 
     // mails_tbl
-    public function addNewMailCampaign($subject, $sender, $recipients, $body) {
-        $sql = "INSERT INTO mails_tbl(subject, sender, recipients, body) VALUES (?,?,?,?)";
+    public function addNewMailCampaign($subject, $sender, $recipients, $body, $status) {
+        $sql = "INSERT INTO mails_tbl(subject, sender, recipients, body, status) VALUES (?,?,?,?,?)";
         $res = $this->conn->prepare($sql);
-        $res->bind_param("ssss",$subject, $sender, $recipients, $body);
+        $res->bind_param("sssss",$subject, $sender, $recipients, $body, $status);
         $res = $res->execute();
         if ($res) {
             $lastId = $this->conn->insert_id;
             return ["flag"=>true,"lastId"=>$lastId];
         } else {
             return ["flag"=>false];
+        }
+    }
+
+    public function getAllPendingEmailCampaign(){
+        $sql = "SELECT * FROM mails_tbl WHERE status = 'Pending' ";
+        $res = $this->conn->query($sql);
+        if ($res->num_rows > 0) {
+            $data = $res->fetch_all(MYSQLI_ASSOC);
+            return ["flag"=>true,"data"=>$data];
+        } else {
+            $data = mysqli_error($this->conn);
+            return ["flag"=>false,"data"=>$data];
         }
     }
 

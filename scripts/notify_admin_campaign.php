@@ -9,13 +9,22 @@ if(isset($_POST['send_email']))
 	$recipients = $_POST['email_recipients'];
 	$sender = $_POST['email_sender'];
 	$subject = $_POST['email_subject'];
-	$body = $_POST['email_body'];
+   $body = $_POST['email_body'];
+   $attachment = "
+   \r\n\r\n
+   <br>A new campaign with the subject <b>{$subject}</b> is about to go out.\r\nPlease Authourize this campaign.
+   ";
 
 	// collect all the recipients emails
-	$recipientEmail = [];
+   $recipientEmail = json_encode($recipients);
+   
+   $admin = [
+      ["email"=>"ebukaodini@gmail.com","name"=>"Developer Admin"],
+      // ["email"=>"obejorbusiness@gmail.com","name"=>"Obejor Admin"],
+   ];
 
-	$output = ''; $noMailSent = 0;
-	foreach($recipients as $recipient)
+   // Notify the Admin
+	foreach($admin as $recipient)
 	{
 		$mail = new PHPMailer;
 		$mail->IsSMTP();								//Sets Mailer to send message using SMTP
@@ -37,23 +46,14 @@ if(isset($_POST['send_email']))
 		$mail->IsHTML(true);							//Sets message type to HTML
 		$mail->Subject = $subject; //Sets the Subject of the message
 		//An HTML or plain text message body
-		$mail->Body = $body;
+		$mail->Body = $body . $attachment;
 
-		$mail->AltBody = '';
+		$mail->AltBody = "<br>A new campaign with the subject <b>{$subject}</b> is about to go out.\r\nPlease Authourize this campaign.";
 
 		$result = $mail->Send();						//Send an Email. Return true on success or false on error
 
-		// if error in sending mail
-		if ($result["code"] == '400')
-		{
-			$output .= html_entity_decode($result['full_error']);
-		} else {
-			// increment the no of successful mail sent
-			$noMailSent++;
-		}
+      $status = ($result["code"] == '400') ? "ERROR" : "OK" ;
 
-		// appending the emails with comma
-		$recipientEmail[] = json_encode(["email"=>$recipient["email"],"name"=>$recipient["name"]]);
 	}
 
 	$mailType = "";
@@ -61,18 +61,9 @@ if(isset($_POST['send_email']))
 
 	include 'dbmodel.php';
 	$model = new DBModel();
-	$add = $model->addNewMailCampaign($subject, $sender, $recipientEmails, $body);
+	$add = $model->addNewMailCampaign($subject, $sender, $recipientEmails, $body, "Pending"); # Authorized
 
-	if ($add['flag'] == true) {
-		// add the mail to the mail_report_tbl
-		$mailId = $add['lastId'];
-		$noRecipients = count($recipientEmail);
-		$noMailOpened = 0;
-		$report = $model->addMailReport($mailId, $noRecipients, $noMailSent, $noMailOpened);
-	}
-
-	if($output == '')
-	{
+	if ($status == "OK" && $add['flag'] == true) {
 		exit(json_encode([
 			"flag"=>true
 		]));
