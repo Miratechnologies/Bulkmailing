@@ -55,7 +55,7 @@ if ($mails['flag'] == true) {
 			<div class="bg-white p-2 mx-0 my-0">
 				<div class="mx-lg-5 mx-sm-auto text-dark display-4">
 					Pending Mail Campaigns
-					<div class="float-lg-right float-sm-none btn obejor-bg-dark text-white my-lg-3 cursor-pointer" onclick="location.href='campaign.email.schedule.php';">Schedule another Mail</div>
+					<!-- <div class="float-lg-right float-sm-none btn obejor-bg-dark text-white my-lg-3 cursor-pointer" onclick="location.href='campaign.email.schedule.php';">Schedule another Mail</div> -->
 				</div>
 				<div class="clearfix"></div>
 			</div>

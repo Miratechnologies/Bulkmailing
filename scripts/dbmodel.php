@@ -455,7 +455,7 @@ class DBModel extends DBConnection{
     }
 
     public function getAllPendingEmailCampaign(){
-        $sql = "SELECT * FROM mail_tbl WHERE status = 'Pending' ";
+        $sql = "SELECT * FROM mails_tbl WHERE status = 'Pending' ";
         $res = $this->conn->query($sql);
         if ($res->num_rows > 0) {
             $data = $res->fetch_all(MYSQLI_ASSOC);
