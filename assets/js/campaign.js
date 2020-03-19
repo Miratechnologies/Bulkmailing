@@ -257,7 +257,7 @@ function sendEmail() {
          } else {
             $('#sendBtn').removeClass('obejor-btn-dark');
             $('#sendBtn').addClass('btn-danger');
-            $('#sendBtn').text(data);
+            $('#sendBtn').text(data.data);
          }
          $('#sendBtn').attr('disabled', false);
       }
