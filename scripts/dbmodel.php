@@ -441,10 +441,10 @@ class DBModel extends DBConnection{
     }
 
     // mails_tbl
-    public function addNewMailCampaign($subject, $sender, $recipients, $body) {
-        $sql = "INSERT INTO mails_tbl(subject, sender, recipients, body) VALUES (?,?,?,?)";
+    public function addNewMailCampaign($subject, $sender, $recipients, $body, $status) {
+        $sql = "INSERT INTO mails_tbl(subject, sender, recipients, body, status) VALUES (?,?,?,?,?)";
         $res = $this->conn->prepare($sql);
-        $res->bind_param("ssss",$subject, $sender, $recipients, $body);
+        $res->bind_param("ssss",$subject, $sender, $recipients, $body, $status);
         $res = $res->execute();
         if ($res) {
             $lastId = $this->conn->insert_id;

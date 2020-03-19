@@ -234,7 +234,9 @@ function sendEmail() {
       email_body: CAMPAIGN_PARAMS.DRAFT_BODY,
    }
 
-   var url = "scripts/send_mail.php"
+   // URL to notify admin
+   var url = "scripts/notify_admin_campaign.php";
+   // var url = "scripts/send_mail.php";
 
    $("#sendBtn").html("<span class='fa fa-spin fa-spinner'></span> Sending...");
    $("#sendBtn").attr("disabled", false);
