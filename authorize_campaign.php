@@ -101,12 +101,18 @@ if ($mails['flag'] == true) {
 
 										// if status is active
 										if ($mail['status'] == "Pending") {
+<<<<<<< Updated upstream
 											// it can be set to cancel the schedule
 											$action = "<button class='btn btn-sm obejor-bg-dark text-light' onclick=\"location.href='scripts/send_mail.php?id={$mail['mail_id']}&status=Authorize'\">Authorize</button>";
 										}
 										// else the status is now either SENT or EXPIRED, hence no action
 										else {
 											$action = "<button class='btn btn-sm obejor-bg-dark text-light' onclick=\"location.href='scripts/send_mail.php?id={$mail['mail_id']}&status=Reject'\">Reject</button>";
+=======
+											$action = "<button class='btn btn-sm obejor-bg-dark text-light' onclick=\"location.href='scripts/send_mail.php?action=send&id={$mail['mail_id']}&status=Authorize'\">Authorize</button><br><br><button class='btn btn-sm obejor-bg-dark text-light' onclick=\"location.href='scripts/send_mail.php?action=send&id={$mail['mail_id']}&status=Reject'\">Reject</button>";
+										} else {
+											$action = "";
+>>>>>>> Stashed changes
 										}
 
 										echo "<tr class='text-dark'>
