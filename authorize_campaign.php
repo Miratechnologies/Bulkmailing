@@ -101,10 +101,8 @@ if ($mails['flag'] == true) {
 
 										// if status is active
 										if ($mail['status'] == "Pending") {
-											// it can be set to cancel the schedule
-											$action = "<button class='btn btn-sm obejor-bg-dark text-light' onclick=\"location.href='scripts/send_mail.php?action=send&id={$mail['mail_id']}&status=Authorize'\">Authorize</button>";
-										}
-										else {
+											$action = "<button class='btn btn-sm obejor-bg-dark text-light' onclick=\"location.href='scripts/send_mail.php?action=send&id={$mail['mail_id']}&status=Authorize'\">Authorize</button><br><br><button class='btn btn-sm obejor-bg-dark text-light' onclick=\"location.href='scripts/send_mail.php?action=send&id={$mail['mail_id']}&status=Reject'\">Reject</button>";
+										} else {
 											$action = "";
 										}
 
