@@ -182,7 +182,7 @@ async function getSMSStatistics() {
       if (result.flag) {
          result.data.forEach(elem => {
             var date = new Date(elem.date);
-            labels.push( date.getDate() + "/" + date.getMonth() + 1  + "/" + date.getFullYear());
+            labels.push( date.getDate() + "/" + (date.getMonth() + 1)  + "/" + date.getFullYear());
             values.push(elem.sms);
          });
 
