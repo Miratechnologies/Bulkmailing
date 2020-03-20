@@ -143,7 +143,7 @@ class SMTP_validateEmail {
 	  // last fallback is the original domain
 	  $mxs[$this->domain] = 0;
 	  
-	  $this->debug(print_r($mxs, 1));
+	//   $this->debug(print_r($mxs, 1));
 	  
 	  $timeout = $this->max_conn_time;
 	   
