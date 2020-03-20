@@ -90,16 +90,43 @@ if ($audiences['flag'] == true) {
 							<input type="file" id="importFromExcel" accept="" class="d-none" onchange="uploadExcelFile()">
 						</div>
 					</div>
-					<br>
+					<!-- <br> -->
 					
-					<div class="form-row">
+					<form action="" method="post">
+						<div class="form-row">
+							<div class="col-lg-3 col-sm-12 input-group my-1">
+								<input type="text" placeholder="Firstname" name="" id="" class="form-control">
+							</div>
+							<div class="col-lg-3 col-sm-12 input-group my-1">
+								<input type="text" placeholder="Lastname" name="" id="" class="form-control">
+							</div>
+							<div class="col-lg-3 col-sm-12 input-group my-1">
+								<input type="text" placeholder="Email" name="" id="" class="form-control">
+							</div>
+							<div class="col-lg-3 col-sm-12 input-group my-1">
+								<input type="text" placeholder="Telephone" name="" id="" class="form-control">
+							</div>
+						</div>
+
+						<button type="submit" class="btn btn-sm obejor-bg-dark text-light my-2 float-right"><span class="fa fa-plus"></span> Add Audience</button>
+					</form>
+					
+
+					<!-- <div class="form-row">
 						<div class="col-lg-3 col-sm-12 input-group my-1">
-							<input type="text" name="" id="">
+							<input type="text" placeholder="Firstname" name="" id="" class="form-control">
 						</div>
 						<div class="col-lg-3 col-sm-12 input-group my-1">
-							<input type="text" name="" id="">
+							<input type="text" placeholder="Lastname" name="" id="" class="form-control">
 						</div>
-					</div>
+						<div class="col-lg-3 col-sm-12 input-group my-1">
+							<input type="text" placeholder="Email" name="" id="" class="form-control">
+						</div>
+						<div class="col-lg-3 col-sm-12 input-group my-1">
+							<input type="text" placeholder="Telephone" name="" id="" class="form-control">
+						</div>
+					</div> -->
+
 				</div>
 				
 				<div class="table-responsive">
