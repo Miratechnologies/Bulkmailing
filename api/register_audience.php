@@ -9,6 +9,7 @@ $lastname = $inputs['lastname'];
 $email = $inputs['email'];
 $telephone = $inputs['telephone'];
 $classification = $inputs['classification'];
+$request = $inputs['request'];
 
 // Validate Inputs & Sanitize Inputs
 
@@ -67,12 +68,12 @@ if ($results[$email] === true) {
    // and send confirmation mail
    if ($add == true) {
       mail($email, 'Confirm Email', 'Please reply to this email to confirm', 'From:'.$sender."\r\n"); // send email
-      die(json_encode(["flag"=>true,"data"=>"Customer has successfully subscribed to newsletter."]));
+      $request == "Application" ? exit(header("location: ../audience.php?succmsg=Customer has successfully subscribed to newsletter.")) : die(json_encode(["flag"=>true,"data"=>"Customer has successfully subscribed to newsletter."]));
    } else {
-      die(json_encode(["flag"=>false,"data"=>"Customer could not subscribe to newsletter."]));
+      $request == "Application" ? exit(header("location: ../audience.php?errmsg=Customer could not subscribe to newsletter.")) : die(json_encode(["flag"=>false,"data"=>"Customer could not subscribe to newsletter."]));
    }
 
 } else {
    // ignore the email and continue unto the next record
-   die(json_encode(["flag"=>false,"msg"=>"Email does not exist."]));
+   $request == "Application" ? exit(header("location: ../audience.php?errmsg=Email does not exist.")) : die(json_encode(["flag"=>false,"msg"=>"Email does not exist."]));
 }
