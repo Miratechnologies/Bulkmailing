@@ -90,9 +90,51 @@ if ($audiences['flag'] == true) {
 							<input type="file" id="importFromExcel" accept="" class="d-none" onchange="uploadExcelFile()">
 						</div>
 					</div>
+					<!-- <br> -->
+					
+					<form action="api/register_audience.php" method="post">
+						<div class="form-row">
+							<div class="col-lg-3 col-sm-12 input-group my-1">
+								<input type="text" placeholder="Firstname" name="firstname" class="form-control">
+							</div>
+							<div class="col-lg-3 col-sm-12 input-group my-1">
+								<input type="text" placeholder="Lastname" name="lastname" class="form-control">
+							</div>
+							<div class="col-lg-3 col-sm-12 input-group my-1">
+								<input type="text" placeholder="Email" name="email" class="form-control">
+							</div>
+							<div class="col-lg-3 col-sm-12 input-group my-1">
+								<input type="text" placeholder="Telephone" name="telephone" class="form-control">
+							</div>
+							<input type="hidden" name="classification" value="CUSTOMER">
+							<input type="hidden" name="request" value="Application">
+						</div>
+
+						<button type="submit" class="btn btn-sm obejor-bg-dark text-light my-2 float-right"><span class="fa fa-plus"></span> Add Audience</button>
+					</form>
+				
 				</div>
 				
 				<div class="table-responsive">
+
+				<?php 
+					if (isset($_GET['succmsg'])) {
+						echo "
+						<div class='alert alert-success alert-dismissible fade show'>
+							<button type='button' class='close alert-dismissible' data-dismiss='alert'>&times;</button>
+							<strong>Success!</strong> {$_GET['succmsg']}
+						</div>
+						";
+					} elseif (isset($_GET['errmsg'])) {
+						echo "
+						<div class='alert alert-danger alert-dismissible fade show'>
+							<button type='button' class='close alert-dismissible' data-dismiss='alert'>&times;</button>
+							<strong>Sorry!</strong> {$_GET['errmsg']}
+						</div>
+						";
+					}
+				?>
+
 					<table class="table table-bordered text-center text-secondary">
 						<thead class="obejor-text-dark">
 							<tr>
