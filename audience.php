@@ -90,6 +90,16 @@ if ($audiences['flag'] == true) {
 							<input type="file" id="importFromExcel" accept="" class="d-none" onchange="uploadExcelFile()">
 						</div>
 					</div>
+					<br>
+					
+					<div class="form-row">
+						<div class="col-lg-3 col-sm-12 input-group my-1">
+							<input type="text" name="" id="">
+						</div>
+						<div class="col-lg-3 col-sm-12 input-group my-1">
+							<input type="text" name="" id="">
+						</div>
+					</div>
 				</div>
 				
 				<div class="table-responsive">
