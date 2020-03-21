@@ -60,7 +60,7 @@ $SMTP_Validator->debug = true;
 // do the validation
 $results = $SMTP_Validator->validate(array($email), $sender);
 
-die(json_encode($results[$email]));
+die($email . " " . json_encode($results[$email]));
 
 // check results
 if ($results[$email] === true) {
