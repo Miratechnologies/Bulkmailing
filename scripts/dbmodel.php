@@ -83,7 +83,7 @@ class DBModel extends DBConnection{
     }
 
     public function checkAudienceExist($email, $telephone) {
-        $sql = "SELECT COUNT(audience_id) as count FROM audience_tbl WHERE email = '$email' AND telephone = '$telephone' ";
+        $sql = "SELECT * FROM audience_tbl WHERE email = '$email' AND telephone = '$telephone' ";
         $res = $this->conn->query($sql);
         if ($res->num_rows > 0) {
             return true;
