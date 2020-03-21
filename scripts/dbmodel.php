@@ -86,10 +86,8 @@ class DBModel extends DBConnection{
         $sql = "SELECT COUNT(audience_id) as count FROM audience_tbl WHERE email = '$email' AND telephone = '$telephone' ";
         $res = $this->conn->query($sql);
         if ($res->num_rows > 0) {
-            echo "TRUE";
-            return false;
+            return true;
         } else {
-            echo "FALSE";
             return false;
         }
     }
