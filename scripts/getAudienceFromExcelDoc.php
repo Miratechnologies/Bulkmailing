@@ -77,7 +77,7 @@ function readExcelData($excelFile){
             $add = $model->addAudience($firstname, $lastname, $email, $telephone, $classification, "SUBSCRIBED");
             // and send confirmation mail
             if ($add == true) {
-               mail($email, 'Confirm Email', 'Please reply to this email to confirm', 'From:'.$sender."\r\n"); // send email
+               mail($email, 'Thanks', 'Thank you for subscribing to Obejor Newsletter.', 'From:'.$sender."\r\n"); // send email
             }
          }
          
