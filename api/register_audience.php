@@ -56,9 +56,11 @@ $sender = 'obejor@obejorgroup.com.ng';
 // instantiate the class
 $SMTP_Validator = new SMTP_validateEmail();
 // turn on debugging if you want to view the SMTP transaction
-$SMTP_Validator->debug = false;
+$SMTP_Validator->debug = true;
 // do the validation
 $results = $SMTP_Validator->validate(array($email), $sender);
+
+die(json_encode($results[$email]));
 
 // check results
 if ($results[$email] === true) {
