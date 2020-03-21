@@ -52,15 +52,13 @@ include_once '../vendor/php-smtp-email-validation/trunk/smtp_validateEmail.class
 
 // Verify that email exist
 // an optional sender
-$sender = 'Obejor<bulk@nglohitech.com>';
+$sender = 'bulk@nglohitech.com';
 // instantiate the class
 $SMTP_Validator = new SMTP_validateEmail();
 // turn on debugging if you want to view the SMTP transaction
 $SMTP_Validator->debug = true;
 // do the validation
 $results = $SMTP_Validator->validate(array($email), $sender);
-
-die(json_encode($results));
 
 // check results
 if ($results[$email] === true) {
@@ -72,7 +70,7 @@ if ($results[$email] === true) {
       $add = $model->addAudience($firstname, $lastname, $email, $telephone, $classification, "SUBSCRIBED");
       // and send confirmation mail
       if ($add == true) {
-         mail($email, 'Confirm Email', 'Please reply to this email to confirm', 'From:'.$sender."\r\n"); // send email
+         mail($email, 'Thanks', 'Thank you for subscribing to Obejor Newsletter.', 'From:'.$sender."\r\n"); // send email
          $request == "Application" ? exit(header("location: ../audience.php?succmsg=Customer has successfully subscribed to newsletter.")) : die(json_encode(["flag"=>true,"data"=>"Customer has successfully subscribed to newsletter."]));
       } else {
          $request == "Application" ? exit(header("location: ../audience.php?errmsg=Customer could not subscribe to newsletter.")) : die(json_encode(["flag"=>false,"data"=>"Customer could not subscribe to newsletter."]));
