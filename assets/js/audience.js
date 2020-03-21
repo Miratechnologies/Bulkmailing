@@ -12,14 +12,13 @@ function uploadExcelFile() {
    var xhttp = new XMLHttpRequest();
    xhttp.onreadystatechange = function() {
       if (xhttp.readyState == 4 && xhttp.status == 200) {
-         // alert(xhttp.responseText);
+         alert(xhttp.responseText);
          var data = JSON.parse(xhttp.responseText);
          if (data.flag == false) {
             alert(data.data);
             $("#labelImporting").hide();
             $("#labelImportFromExcel").show();
          } else {
-
             alert("Audiences imported successfully.");
             setTimeout(() => {
                location.reload();
