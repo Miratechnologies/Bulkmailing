@@ -128,6 +128,15 @@ class scheduler
 			$mail->IsHTML(true);							//Sets message type to HTML
 			$mail->Subject = $subject; //Sets the Subject of the message
 			//An HTML or plain text message body
+			
+			// replacing the placeholders in the body
+			// name - [[NAME]]
+			$body = str_replace("[[NAME]]", $recipient["name"], $body);
+			// email - [[EMAIL]]
+			$body = str_replace("[[EMAIL]]", $recipient["email"], $body);
+			// telephone - [[TELEPHONE]]
+			$body = str_replace("[[TELEPHONE]]", $recipient["telephone"], $body);
+
 			$mail->Body = $body;
 
 			$mail->AltBody = '';

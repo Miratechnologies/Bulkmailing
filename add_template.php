@@ -264,7 +264,8 @@ if ($get['flag'] == true) {
                      <div id="textContent" class="collapse" data-parent="#accordion">
                         <div class="card-body">
                            <label for="textContentText" class="">Text</label> <br>
-                           <textarea id="textContentText" class="form-control" cols="10" rows="3" placeholder="Enter Text..."></textarea><br>
+                           <textarea id="textContentText" class="form-control" cols="10" rows="3" placeholder="Enter Text..."></textarea>
+                           <span><b>For Recipient Placeholder,</b><br>Use <b>[[NAME]]</b> for the recipient's name<br>Use <b>[[EMAIL]]</b> for the recipient's email<br>Use <b>[[TELEPHONE]]</b> for the recipient's telephone number</span><br><br>
                            
                            <label for="textContentFamily">Font Family</label> <br>
                            <select class="form-control" id="textContentFamily">
@@ -333,7 +334,8 @@ if ($get['flag'] == true) {
                      <div id="textLinkContent" class="collapse" data-parent="#accordion">
                         <div class="card-body">
                            <label for="textLinkContentText" class="">Text</label> <br>
-                           <textarea id="textLinkContentText" class="form-control" cols="10" rows="3" placeholder="Enter Text..."></textarea><br>
+                           <textarea id="textLinkContentText" class="form-control" cols="10" rows="3" placeholder="Enter Text..."></textarea>
+                           <span><b>For Recipient Placeholder,</b><br>Use <b>[[NAME]]</b> for the recipient's name<br>Use <b>[[EMAIL]]</b> for the recipient's email<br>Use <b>[[TELEPHONE]]</b> for the recipient's telephone number</span><br><br>
                            
                            <label for="textLinkContentLink" class=""><span class="fa fa-link"></span> Text Link</label> <br>
                            <input id="textLinkContentLink" class="form-control" placeholder="http://www.address.com"><br>
