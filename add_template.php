@@ -469,51 +469,6 @@ if ($get['flag'] == true) {
                      </div>
                   </div>
 
-                  <!-- Header -->
-                  <div>
-                     <div class="card-header">
-                        <a class="h4 text-secondary card-link w-100" data-toggle="collapse" href="#headerContent">
-                           Default Header
-                        </a>
-                     </div>
-                     <div id="headerContent" class="collapse" data-parent="#accordion">
-                        <div class="card-body">
-                           <select id="imageSelect">
-                              <option value="logo.png">Logo</option>
-                              <option value="product.jpg">Product</option>
-                              <option value="banner.jpg">Banner</option>
-                           </select><br>
-                           <input type="url" id="imagelink" placeholder="Link"><br>
-
-                           <label for="textContentSize">Image Height</label> <span class="font-weight-bold" id="textContentSizeDisplay"></span> <br>
-                           <input type="range" onchange="$('#textContentSizeDisplay').html($('#textContentSize').val())" class="form-control" id="textContentSize" value="20" min="1" max="100"><br>
-                           <label for="textContentSize">Image Width</label> <span class="font-weight-bold" id="textContentSizeDisplay"></span> <br>
-                           <input type="range" onchange="$('#textContentSizeDisplay').html($('#textContentSize').val())" class="form-control" id="textContentSize" value="20" min="1" max="100"><br>
-
-                           <label for="textContentXPadding">Horizontal Padding</label> <span class="font-weight-bold" id="textContentXPaddingDisplay"></span> <br>
-                           <input type="range" onchange="$('#textContentXPaddingDisplay').html($('#textContentXPadding').val())" class="form-control" id="textContentXPadding" value="2" min="1" max="50"><br>
-                           <label for="textContentYPadding">Vertical Padding</label> <span class="font-weight-bold" id="textContentYPaddingDisplay"></span> <br>
-                           <input type="range" onchange="$('#textContentYPaddingDisplay').html($('#textContentYPadding').val())" class="form-control" id="textContentYPadding" value="2" min="1" max="50"><br>
-
-                           <label for="textContentAlign">Text Align</label><br>
-                           <div id="textContentAlignCenter" onclick="textAlignClicked('center')" class="btn btn-sm btn-outline-dark cursor-pointer"><span class="fa fa-align-center"></span></div>
-                           <div id="textContentAlignJustify" onclick="textAlignClicked('justify')" class="btn btn-sm btn-outline-dark cursor-pointer"><span class="fa fa-align-justify"></span></div>
-                           <div id="textContentAlignStart" onclick="textAlignClicked('start')" class="btn btn-sm btn-outline-dark cursor-pointer"><span class="fa fa-align-left"></span></div>
-                           <div id="textContentAlignEnd" onclick="textAlignClicked('end')" class="btn btn-sm btn-outline-dark cursor-pointer"><span class="fa fa-align-right"></span></div>
-                           <br><br>
-
-                           <label for="textContentStyle">Text Style</label><br>
-                           <div id="textContentStyleNormal" onclick="textStyleClicked('normal')" class="btn btn-sm btn-outline-dark cursor-pointer"><span class="fa fa-font"></span></div>
-                           <div id="textContentStyleItalic" onclick="textStyleClicked('italic')" class="btn btn-sm btn-outline-dark cursor-pointer"><span class="fa fa-italic"></span></div>
-                           <div id="textContentStyleStrikethrough" onclick="textStyleClicked('line-through')" class="btn btn-sm btn-outline-dark cursor-pointer"><span class="fa fa-strikethrough"></span></div>
-                           <div id="textContentStyleUnderline" onclick="textStyleClicked('underline')" class="btn btn-sm btn-outline-dark cursor-pointer"><span class="fa fa-underline"></span></div>
-                           <br>
-
-                           <button class="my-3 btn btn-md btn-dark" onclick="addImage()">Apply</button>
-                        </div>
-                     </div>
-                  </div>
-
                   <!-- Footer -->
                   <div>
                      <div class="card-header">
@@ -523,38 +478,7 @@ if ($get['flag'] == true) {
                      </div>
                      <div id="footerContent" class="collapse" data-parent="#accordion">
                         <div class="card-body">
-                           <select id="imageSelect">
-                              <option value="logo.png">Logo</option>
-                              <option value="product.jpg">Product</option>
-                              <option value="banner.jpg">Banner</option>
-                           </select><br>
-                           <input type="url" id="imagelink" placeholder="Link"><br>
-
-                           <label for="textContentSize">Image Height</label> <span class="font-weight-bold" id="textContentSizeDisplay"></span> <br>
-                           <input type="range" onchange="$('#textContentSizeDisplay').html($('#textContentSize').val())" class="form-control" id="textContentSize" value="20" min="1" max="100"><br>
-                           <label for="textContentSize">Image Width</label> <span class="font-weight-bold" id="textContentSizeDisplay"></span> <br>
-                           <input type="range" onchange="$('#textContentSizeDisplay').html($('#textContentSize').val())" class="form-control" id="textContentSize" value="20" min="1" max="100"><br>
-
-                           <label for="textContentXPadding">Horizontal Padding</label> <span class="font-weight-bold" id="textContentXPaddingDisplay"></span> <br>
-                           <input type="range" onchange="$('#textContentXPaddingDisplay').html($('#textContentXPadding').val())" class="form-control" id="textContentXPadding" value="2" min="1" max="50"><br>
-                           <label for="textContentYPadding">Vertical Padding</label> <span class="font-weight-bold" id="textContentYPaddingDisplay"></span> <br>
-                           <input type="range" onchange="$('#textContentYPaddingDisplay').html($('#textContentYPadding').val())" class="form-control" id="textContentYPadding" value="2" min="1" max="50"><br>
-
-                           <label for="textContentAlign">Text Align</label><br>
-                           <div id="textContentAlignCenter" onclick="textAlignClicked('center')" class="btn btn-sm btn-outline-dark cursor-pointer"><span class="fa fa-align-center"></span></div>
-                           <div id="textContentAlignJustify" onclick="textAlignClicked('justify')" class="btn btn-sm btn-outline-dark cursor-pointer"><span class="fa fa-align-justify"></span></div>
-                           <div id="textContentAlignStart" onclick="textAlignClicked('start')" class="btn btn-sm btn-outline-dark cursor-pointer"><span class="fa fa-align-left"></span></div>
-                           <div id="textContentAlignEnd" onclick="textAlignClicked('end')" class="btn btn-sm btn-outline-dark cursor-pointer"><span class="fa fa-align-right"></span></div>
-                           <br><br>
-
-                           <label for="textContentStyle">Text Style</label><br>
-                           <div id="textContentStyleNormal" onclick="textStyleClicked('normal')" class="btn btn-sm btn-outline-dark cursor-pointer"><span class="fa fa-font"></span></div>
-                           <div id="textContentStyleItalic" onclick="textStyleClicked('italic')" class="btn btn-sm btn-outline-dark cursor-pointer"><span class="fa fa-italic"></span></div>
-                           <div id="textContentStyleStrikethrough" onclick="textStyleClicked('line-through')" class="btn btn-sm btn-outline-dark cursor-pointer"><span class="fa fa-strikethrough"></span></div>
-                           <div id="textContentStyleUnderline" onclick="textStyleClicked('underline')" class="btn btn-sm btn-outline-dark cursor-pointer"><span class="fa fa-underline"></span></div>
-                           <br>
-
-                           <button class="my-3 btn btn-md btn-dark" onclick="addImage()">Apply</button>
+                           <button class="my-3 btn btn-lg btn-dark" onclick="addFooter()">Add Default Footer</button>
                         </div>
                      </div>
                   </div>
