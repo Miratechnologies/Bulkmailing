@@ -418,6 +418,13 @@ if ($get['flag'] == true) {
                            <label for="imgContentYPadding">Vertical Padding</label> <span class="font-weight-bold" id="imgContentYPaddingDisplay"></span> <br>
                            <input type="range" onchange="$('#imgContentYPaddingDisplay').html($('#imgContentYPadding').val())" class="form-control" id="imgContentYPadding" value="0" min="0" max="50"><br>
 
+                           <label for="imgContentAlign">Image Alignment</label> <br>
+                           <select class="form-control" id="imgContentAlign">
+                              <option value="middle">Middle</option>
+                              <option value="left">Left</option>
+                              <option value="right">Right</option>
+                           </select>
+
                            <button class="my-3 btn btn-md btn-dark" onclick="addImage()">Apply</button>
                         </div>
                      </div>
@@ -449,7 +456,14 @@ if ($get['flag'] == true) {
                            <label for="imgLinkContentYPadding">Vertical Padding</label> <span class="font-weight-bold" id="imgLinkContentYPaddingDisplay"></span> <br>
                            <input type="range" onchange="$('#imgLinkContentYPaddingDisplay').html($('#imgLinkContentYPadding').val())" class="form-control" id="imgLinkContentYPadding" value="0" min="0" max="50"><br>
 
-                           <button class="my-3 btn btn-md btn-dark" onclick="addImage()">Apply</button>
+                           <label for="imgLinkContentAlign">Image Alignment</label> <br>
+                           <select class="form-control" id="imgLinkContentAlign">
+                              <option value="middle">Middle</option>
+                              <option value="left">Left</option>
+                              <option value="right">Right</option>
+                           </select>
+
+                           <button class="my-3 btn btn-md btn-dark" onclick="addImageLink()">Apply</button>
                            
                         </div>
                      </div>

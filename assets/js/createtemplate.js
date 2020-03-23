@@ -116,7 +116,7 @@ function createNewTemplate ()
             <td bgcolor="#eeeee6" width="100%" style="padding: 10px 0;">
 
                <!-- Container Table -->
-               <table width="80%" cellpadding="0" cellspacing="0" border="0" align="center">
+               <table width="95%" cellpadding="0" cellspacing="0" border="0" align="center">
                   <tbody>
                      <tr style="border: 1px solid rgb(190, 147, 60);">
                         <td class="text-center" id="template-contents" width="100%" style="background-color: rgb(253, 252, 252);">
@@ -574,20 +574,21 @@ function addImage ()
    var height = $("#imgContentHeight").val();
    var xpadding = $("#imgContentXPadding").val();
    var ypadding = $("#imgContentYPadding").val();
+   var align = $("#imgContentAlign").val();
 
    var content = 
    `<p 
       onclick="select('cntt','cntt${cntt}');" 
       id="cntt${cntt}" 
       class="selectable-content"
+      style="margin: 0px 0px; overflow: auto;"
    >
    <img 
       src="${src}" 
       width="${width}%"
       height="${height}%"
-      style="
-      padding: ${ypadding}% ${xpadding}%; 
-      " 
+      align="${align}" 
+      style="padding: ${ypadding}% ${xpadding}%; " 
       alt="${imageName}"
    />
    </p>`
@@ -611,12 +612,14 @@ function addImageLink ()
    var xpadding = $("#imgLinkContentXPadding").val();
    var ypadding = $("#imgLinkContentYPadding").val();
    var link = $("#imageLinkContentLink").val();
+   var align = $("#imgLinkContentAlign").val();
 
    var content = 
    `<p 
       onclick="select('cntt','cntt${cntt}');" 
       id="cntt${cntt}" 
       class="selectable-content"
+      style="margin: 0px 0px; overflow: auto;"
    >
    <a 
       href="${link}" 
@@ -626,9 +629,8 @@ function addImageLink ()
       src="${src}" 
       width="${width}%"
       height="${height}%"
-      style="
-      padding: ${ypadding}% ${xpadding}%; 
-      " 
+      align="${align}" 
+      style="padding: ${ypadding}% ${xpadding}%; " 
       alt="${imageName}"
    />
    </a>
