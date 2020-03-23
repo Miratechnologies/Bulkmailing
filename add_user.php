@@ -148,7 +148,7 @@ if (isset($inputs['save_user'])) {
 					<label for="g_password" class="text-lg"> <span class="fa fa-lock"></span> Password:</label>
 					<div class="input-group">
 						<input type="hidden" id="password" name="password" value="">
-						<input type="text" name="g_password" id="g_password" value="" class="form-control input-group-prepend">
+						<input type="text" name="g_password" id="g_password" value="" onchange="$('#password').val($('#g_password').val())" class="form-control input-group-prepend">
 						<button type="button" class="input-group-append btn btn-sm obejor-bg-dark text-white" onclick="generatePassword();">Generate Password</button>
 					</div>
 					<small class="obejor-text-dark">Don't forget to copy the password</small>
