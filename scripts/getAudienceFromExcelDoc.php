@@ -69,7 +69,7 @@ function readExcelData($excelFile){
       // do the validation
       $results = $SMTP_Validator->validate(array($email), $sender);
       // check results
-      if ($results[$email] === true) {
+      // if ($results[$email] === true) {
 
          // if user email or telephone don't exist
          if ($model->checkAudienceExist($email, $telephone) == false) {
@@ -81,10 +81,10 @@ function readExcelData($excelFile){
             }
          }
          
-      } else {
-         // ignore the email and continue unto the next record
+      // } else {
+      //    // ignore the email and continue unto the next record
          continue;
-      }
+      // }
    }
 
    die(json_encode([
