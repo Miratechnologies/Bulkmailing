@@ -60,10 +60,9 @@ $SMTP_Validator->debug = true;
 // do the validation
 $results = $SMTP_Validator->validate(array($email), $sender);
 
-die($email . " " . json_encode($results[$email]));
 
 // check results
-if ($results[$email] === true) {
+// if ($results[$email] === true) {
    include '../scripts/dbmodel.php';
    
    $model = new DBModel();
@@ -81,7 +80,7 @@ if ($results[$email] === true) {
       $request == "Application" ? exit(header("location: ../audience.php?errmsg=Customer already exists on our newsletter.")) : die(json_encode(["flag"=>false,"data"=>"Customer could not subscribe to newsletter."]));
    }
 
-} else {
-   // ignore the email and continue unto the next record
-   $request == "Application" ? exit(header("location: ../audience.php?errmsg=Email does not exist.")) : die(json_encode(["flag"=>false,"msg"=>"Email does not exist."]));
-}
+// } else {
+//    // ignore the email and continue unto the next record
+//    $request == "Application" ? exit(header("location: ../audience.php?errmsg=Email does not exist.")) : die(json_encode(["flag"=>false,"msg"=>"Email does not exist."]));
+// }

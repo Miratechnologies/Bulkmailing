@@ -72,7 +72,7 @@ if (isset($_GET['action']) && $_GET['action'] == "send") {
 				// email - [[EMAIL]]
 				$body = str_replace("[[EMAIL]]", $recipient["email"], $body);
 				// telephone - [[TELEPHONE]]
-				$body = str_replace("[[TELEPHONE]]", $recipient["telephone"], $body);
+				// $body = str_replace("[[TELEPHONE]]", $recipient["telephone"], $body);
 
 				$mail->Body = $body;
 
