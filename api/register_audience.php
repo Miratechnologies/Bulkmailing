@@ -17,31 +17,31 @@ include '../scripts/validation.php';
 $validation = new Validation();
 
 if($validation->validateName($firstname,1,20) == false) {
-   die(json_encode(["flag"=>false,"msg"=>"Invalid Firstname."]));
+   $request == "Application" ? exit(header("location: ../audience.php?errmsg=Invalid Firstname.")) : die(json_encode(["flag"=>false,"msg"=>"Invalid Firstname."]));
 } else {
    $firstname = $validation->sanitize($firstname);
 }
 
 if ($validation->validateName($lastname,1,20) == false) {
-   die(json_encode(["flag"=>false,"msg"=>"Invalid Lastname."]));
+   $request == "Application" ? exit(header("location: ../audience.php?errmsg=Invalid Lastname.")) : die(json_encode(["flag"=>false,"msg"=>"Invalid Lastname."]));
 } else {
    $lastname = $validation->sanitize($lastname);
 }
 
 if ($validation->validateEmail($email,10,50) == false) {
-   die(json_encode(["flag"=>false,"msg"=>"Invalid Email."]));
+   $request == "Application" ? exit(header("location: ../audience.php?errmsg=Invalid Email.")) : die(json_encode(["flag"=>false,"msg"=>"Invalid Email."]));
 } else {
    $email = $validation->sanitize($email);
 }
 
 if ($validation->validateTelephone($telephone,10,20) == false) {
-   die(json_encode(["flag"=>false,"msg"=>"Invalid Telephone."]));
+   $request == "Application" ? exit(header("location: ../audience.php?errmsg=Invalid Telephone.")) : die(json_encode(["flag"=>false,"msg"=>"Invalid Telephone."]));
 } else {
    $telephone = $validation->sanitize($telephone);
 }
 
 if ($classification != "CUSTOMER" && $classification != "SUBSCRIBER") {
-   die(json_encode(["flag"=>false,"msg"=>"Invalid Classification."]));
+   $request == "Application" ? exit(header("location: ../audience.php?errmsg=Invalid Classification.")) : die(json_encode(["flag"=>false,"msg"=>"Invalid Classification."]));
 }
 
 // No Error
