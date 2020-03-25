@@ -20,7 +20,7 @@ if(isset($_POST['send_email']))
    
    $admin = [
       ["email"=>"ebukaodini@gmail.com","name"=>"Developer Admin"],
-      ["email"=>"obejorbusiness@gmail.com","name"=>"Obejor Admin"],
+      // ["email"=>"obejorbusiness@gmail.com","name"=>"Obejor Admin"],
    ];
 
    // Notify the Admin

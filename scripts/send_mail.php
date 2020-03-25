@@ -68,13 +68,13 @@ if (isset($_GET['action']) && $_GET['action'] == "send") {
 				
 				// replacing the placeholders in the body
 				// name - [[NAME]]
-				$body = str_replace("[[NAME]]", $recipient["name"], $body);
+				$newBody = str_replace("[[NAME]]", $recipient["name"], $body);
 				// email - [[EMAIL]]
-				$body = str_replace("[[EMAIL]]", $recipient["email"], $body);
+				$newBody = str_replace("[[EMAIL]]", $recipient["email"], $newBody);
 				// telephone - [[TELEPHONE]]
 				// $body = str_replace("[[TELEPHONE]]", $recipient["telephone"], $body);
 
-				$mail->Body = $body;
+				$mail->Body = $newBody;
 
 				$mail->AltBody = '';
 
