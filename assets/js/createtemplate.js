@@ -7,6 +7,7 @@ var selected = null;
 
 $(document).ready(function(){
    start();
+   setState();
 });
 
 // Hiding & Showing
@@ -106,6 +107,51 @@ function clearSelect() {
    selects = [];
 }
 
+var states = [];
+var state;
+
+function setState()
+{
+   state = (states.push($("#template-pad").html())) - 1;
+}
+
+function getState(_state)
+{
+   return states[_state];
+}
+
+function undo()
+{
+   try {
+      if (states.length == 0)
+      throw("No Previous State");
+      else
+      {
+         state--;
+         var template = getState(state);
+         $("#template-pad").html(template);
+      }
+   } catch (error) {
+      alert(error);
+   }
+}
+
+function redo()
+{
+   try {
+      if (states.length < (state + 1))
+      throw("No Next State");
+      else
+      {
+         state++;
+         var template = getState(state);
+         $("#template-pad").html(template);
+      }
+   } catch (error) {
+      alert(error);
+   }
+}
+
 function createNewTemplate ()
 {
    var template = 
@@ -133,6 +179,7 @@ function createNewTemplate ()
 
    $("#template-pad").html(template);
    showRow();
+   setState();
 }
 
 function addFooter()
@@ -279,6 +326,7 @@ function addFooter()
 
    $("#"+selected).html(contents);
    clearSelect();
+   setState();
 
 }
 
@@ -329,6 +377,7 @@ function addRow ()
 
    // show add row for subsequent rows
    $("#btnShowRow").show();
+   setState();
 
 }
 
@@ -349,6 +398,8 @@ function editRow ()
    $("#editrowBorderWeight").val(0);
    $("#editrowBorderColor").val("#ffffff");
    $("#editrowHeight").val(0);
+
+   setState();
 }
 
 function addColumns ()
@@ -407,6 +458,8 @@ function addColumns ()
    $("#columnBorderColor").val("#ffffff");
    $("#columnHeight").val(0);
    
+   setState();
+
 }
 
 function editColumn()
@@ -433,6 +486,8 @@ function editColumn()
    $("#editcolumnBorderWeight").val(0);
    $("#editcolumnBorderColor").val("#ffffff");
    $("#editcolumnHeight").val(0);
+
+   setState();
 }
 
 // Contents -------------------------------------------------------------
@@ -621,30 +676,7 @@ function addText ()
    }
 
    clearSelect();
-}
-
-function saveTemplate ()
-{
-   var body = $("#template-pad").html();
-   var templateForm = $("#templateForm");
-   // var formData = new FormData(templateForm);
-   // strip body
-   body = body.replace(`class="selectable"`,"");
-   body = body.replace(`class="selected"`,"");
-
-   $("#email_body").val(body);
-      
-   templateForm.submit();
-}
-
-function previewTemplate ()
-{
-   var body = $("#template-pad").html();
-   // strip body
-   body = body.replace(`class="selectable"`,"");
-   body = body.replace(`class="selected"`,"");
-   // ! Do it for all
-   $("#bodyPreview").html(body);
+   setState();
 }
 
 function addTextLink ()
@@ -694,6 +726,7 @@ function addTextLink ()
    }
 
    clearSelect();
+   setState();
 }
 
 imageSelector = "";
@@ -747,6 +780,7 @@ function addImage ()
    }
    
    clearSelect();
+   setState();
 }
 
 function addImageLink ()
@@ -790,6 +824,7 @@ function addImageLink ()
    }
    
    clearSelect();
+   setState();
 }
 
 // Content Functionalities
@@ -798,10 +833,36 @@ function remove ()
 {
    $("#"+selected).remove();
    clearSelect();
+   setState();
 }
 
 function clearContent ()
 {
    $("#"+selected).empty();
    clearSelect();
+   setState();
+}
+
+function saveTemplate ()
+{
+   var body = $("#template-pad").html();
+   var templateForm = $("#templateForm");
+   // var formData = new FormData(templateForm);
+   // strip body
+   body = body.replace(`class="selectable"`,"");
+   body = body.replace(`class="selected"`,"");
+
+   $("#email_body").val(body);
+      
+   templateForm.submit();
+}
+
+function previewTemplate ()
+{
+   var body = $("#template-pad").html();
+   // strip body
+   body = body.replace(`class="selectable"`,"");
+   body = body.replace(`class="selected"`,"");
+   // ! Do it for all
+   $("#bodyPreview").html(body);
 }

@@ -88,11 +88,13 @@ if ($get['flag'] == true) {
          <button id="btnShowRow" onclick="showRow();" class="btn btn-md btn-outline-secondary text-dark">Add New Row</button>
          
          <div class="btn-group float-right">
+            <button class="btn btn-md btn-secondary" title="Undo" onclick="undo()"><span class="fa fa-undo"></span></button>
+            <button class="btn btn-md btn-secondary" title="Redo" onclick="redo()"><span class="fa fa-repeat"></span></button>
             <button class="btn btn-md btn-secondary" onclick="clearSelect()">Deselect</button>
-            <!-- <button class="btn btn-md btn-secondary" onclick="clearContent()">Clear</button> -->
          </div>
          
-         <div class="clearfix mb-3"></div>
+         <div class="clearfix my-3"></div>
+         <br>
 
          <div id="create-new-template">
 
