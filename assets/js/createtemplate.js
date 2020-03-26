@@ -693,13 +693,16 @@ function addTextLink ()
    var align = textLinkContentAlign;
    var style = textContentStyle;
 
-   var styleCode = (style == "normal" || style == "italic") ? `font-style: ${style}; ` : `text-decoration: ${style}; ` ;
+   var styleCode = (style == "normal" || style == "italic") ? `font-style: ${style}; text-decoration: none;` : `text-decoration: ${style}; ` ;
 
    var content = 
    `<p 
       onclick="select('cntt','cntt${cntt}');" 
       id="cntt${cntt}" 
       class="selectable-content"
+      style="
+      margin: 0px 0px !important;
+      "
    >
    <a 
       href="${link}" 
