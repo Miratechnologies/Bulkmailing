@@ -88,11 +88,13 @@ if ($get['flag'] == true) {
          <button id="btnShowRow" onclick="showRow();" class="btn btn-md btn-outline-secondary text-dark">Add New Row</button>
          
          <div class="btn-group float-right">
+            <button class="btn btn-md btn-secondary" title="Undo" onclick="undo()"><span class="fa fa-undo"></span></button>
+            <button class="btn btn-md btn-secondary" title="Redo" onclick="redo()"><span class="fa fa-repeat"></span></button>
             <button class="btn btn-md btn-secondary" onclick="clearSelect()">Deselect</button>
-            <!-- <button class="btn btn-md btn-secondary" onclick="clearContent()">Clear</button> -->
          </div>
          
-         <div class="clearfix mb-3"></div>
+         <div class="clearfix my-3"></div>
+         <br>
 
          <div id="create-new-template">
 
@@ -265,7 +267,7 @@ if ($get['flag'] == true) {
                         <div class="card-body">
                            <label for="textContentText" class="">Text</label> <br>
                            <textarea id="textContentText" class="form-control" cols="10" rows="3" placeholder="Enter Text..."></textarea>
-                           <span><b>For Recipient Placeholder,</b><br>Use <b>[[NAME]]</b> for the recipient's name<br>Use <b>[[EMAIL]]</b> for the recipient's email<br>Use <b>[[TELEPHONE]]</b> for the recipient's telephone number</span><br><br>
+                           <span><b>For Recipient Placeholder,</b><br>Use <b>[[NAME]]</b> for the recipient's name<br>Use <b>[[EMAIL]]</b> for the recipient's email</span><br><br>
                            
                            <label for="textContentFamily">Font Family</label> <br>
                            <select class="form-control" id="textContentFamily">
@@ -335,7 +337,7 @@ if ($get['flag'] == true) {
                         <div class="card-body">
                            <label for="textLinkContentText" class="">Text</label> <br>
                            <textarea id="textLinkContentText" class="form-control" cols="10" rows="3" placeholder="Enter Text..."></textarea>
-                           <span><b>For Recipient Placeholder,</b><br>Use <b>[[NAME]]</b> for the recipient's name<br>Use <b>[[EMAIL]]</b> for the recipient's email<br>Use <b>[[TELEPHONE]]</b> for the recipient's telephone number</span><br><br>
+                           <span><b>For Recipient Placeholder,</b><br>Use <b>[[NAME]]</b> for the recipient's name<br>Use <b>[[EMAIL]]</b> for the recipient's email</span><br><br>
                            
                            <label for="textLinkContentLink" class=""><span class="fa fa-link"></span> Text Link</label> <br>
                            <input id="textLinkContentLink" class="form-control" placeholder="http://www.address.com"><br>
@@ -355,7 +357,7 @@ if ($get['flag'] == true) {
                            </select><br>
 
                            <label for="textLinkContentSize">Text Size</label> <span class="font-weight-bold" id="textLinkContentSizeDisplay"></span> <br>
-                           <input type="range" onchange="$('#textLinkContentSizeDisplay').html($('#textLinkContentSize').val())" class="form-control" id="textLinkContentSize" value="20" min="1" max="100"><br>
+                           <input type="range" onchange="$('#textLinkContentSizeDisplay').html($('#textLinkContentSize').val())" class="form-control" id="textLinkContentSize" value="15" min="1" max="100"><br>
                            
                            <label for="textLinkContentColor">Text Color</label> <br>
                            <input type="color" class="form-control" id="textLinkContentColor"><br>
