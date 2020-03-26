@@ -63,18 +63,7 @@ if ($audiences['flag'] == true) {
 					<div class="form-row">
 						<!-- filter section -->
 						<div class="col-lg-3 col-sm-12 input-group my-1">
-							<div class="input-group-prepend">
-								<span class="btn obejor-bg-dark text-light font-weight-bold">
-									<span class="fa fa-filter"></span>
-									Filter
-								</span>
-							</div>
-							
-							<select name="filter" class="input-group-append text-md form-control w-0 border-muted">
-								<option value="ALL">All</option>
-								<option value="CUSTOMER">Customer</option>
-								<option value="SUBSCRIBER">Subscriber</option>
-							</select>
+							<span class="h3 text-dark font-weight-normal px-2">Add New Audience</span>
 						</div>
 
 						<!-- Import Section -->

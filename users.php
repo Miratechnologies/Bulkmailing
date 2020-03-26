@@ -63,7 +63,7 @@ if ($users['flag'] == true) {
 				<div class="my-1 border p-1 rounded">
 					<div class="form-row">
 						<!-- filter section -->
-						<div class="col-lg-3 col-sm-12 input-group my-1">
+						<!-- <div class="col-lg-3 col-sm-12 input-group my-1">
 							<div class="input-group-prepend">
 								<span class="btn obejor-bg-dark text-light font-weight-bold">
 									<span class="fa fa-filter"></span>
@@ -76,10 +76,10 @@ if ($users['flag'] == true) {
 								<option value="CUSTOMER">Admin</option>
 								<option value="SUBSCRIBER">Subscriber</option>
 							</select>
-						</div>
+						</div> -->
 
 						<!-- Import Section -->
-						<div class="col-lg-9 col-12 my-1">
+						<div class="col-lg-12 col-12 my-1">
 							<a href="add_user.php" class="btn btn-sm obejor-bg-dark text-white text-lg float-right">
 								<span class="fa fa-plus"></span>
 								Add User
