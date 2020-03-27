@@ -174,7 +174,8 @@ if ($templates['flag'] == true) {
 								$count = 1;
 								foreach ($allDrafts as $template) {
 									$delete = ($role == "ADMIN") ? "<a href='scripts/delete_draft.php?draft={$template['draft_id']}' class='btn btn-sm obejor-bg-dark border text-white' title='Delete'><span class='fa fa-trash'></span></a>" : "" ;
-									echo "
+									$campaign = ($template['draft_type'] == "SMS") ? 'campaign.sms.php' : 'campaign.email.php';
+									echo <<<HTML
 									<div class='col-lg-3 col-11 my-2 mx-4'>
 
 										<div class='card'>
@@ -190,9 +191,9 @@ if ($templates['flag'] == true) {
 												<textarea id='all_code_body{$count}' class='d-none'>{$template['body']}</textarea>
 												
 												<div class='btn-group my-2'>
-													<a href='campaign.sms.php' class='btn btn-sm obejor-bg-dark border text-white'>Campaign</a>
+													 <a href='$campaign' class='btn btn-sm obejor-bg-dark border text-white'>Campaign</a>
 												
-													<button class='btn btn-sm obejor-bg-dark border text-white' onclick='previewTemplateCode(\"email_code_body{$count}\");' data-toggle='modal' data-target='#previewBody'>Preview</button>
+													<button class='btn btn-sm obejor-bg-dark border text-white' onclick="previewTemplateCode('all_code_body{$count}');" data-toggle='modal' data-target='#previewBody'>Preview</button>
 
 													{$delete}
 												</div>
@@ -201,12 +202,16 @@ if ($templates['flag'] == true) {
 										</div>
 
 									</div>
-									";
-									
-									// <a href='edit_draft.php?draft={$template['draft_id']}' class='btn btn-sm obejor-bg-dark border text-white'><span class='fa fa-edit'></span></a>
+HTML;
 
 									$count++;
 								}
+							} else {
+								echo "
+								<div class='alert alert-info w-100 '>
+									No Drafts available
+								</div>
+								";
 							}
 						?>
 					</div>
@@ -222,7 +227,7 @@ if ($templates['flag'] == true) {
 								$count = 1;
 								foreach ($emailDrafts as $template) {
 									$delete = ($role == "ADMIN") ? "<a href='scripts/delete_draft.php?draft={$template['draft_id']}' class='btn btn-sm obejor-bg-dark border text-white' title='Delete'><span class='fa fa-trash'></span></a>" : "" ;
-									echo "
+									echo <<<HTML
 									<div class='col-lg-3 col-11 my-2 mx-4'>
 
 										<div class='card'>
@@ -237,9 +242,9 @@ if ($templates['flag'] == true) {
 												<textarea id='email_code_body{$count}' class='d-none'>{$template['body']}</textarea>
 												
 												<div class='btn-group my-2'>
-													<a href='campaign.sms.php' class='btn btn-sm obejor-bg-dark border text-white'>Campaign</a>
+													<a href='campaign.email.php' class='btn btn-sm obejor-bg-dark border text-white'>Campaign</a>
 												
-													<button class='btn btn-sm obejor-bg-dark border text-white' onclick='previewTemplateCode(\"email_code_body{$count}\");' data-toggle='modal' data-target='#previewBody'>Preview</button>
+													<button class='btn btn-sm obejor-bg-dark border text-white' onclick="previewTemplateCode('email_code_body{$count}');" data-toggle='modal' data-target='#previewBody'>Preview</button>
 
 													{$delete}
 												</div>
@@ -248,13 +253,17 @@ if ($templates['flag'] == true) {
 										</div>
 
 									</div>
-									";
+HTML;
 									$count++;
 								}
+							} else {
+								echo "
+								<div class='alert alert-info w-100 '>
+									No Drafts available
+								</div>
+								";
 							}
 						?>
-
-						<!-- <a href='edit_draft.php?draft={$template['draft_id']}' class='btn btn-sm obejor-bg-dark border text-white'><span class='fa fa-edit'></span></a> -->
 
 					</div>
 				</div>
@@ -269,7 +278,7 @@ if ($templates['flag'] == true) {
 								$count = 1;
 								foreach ($smsDrafts as $template) {
 									$delete = ($role == "ADMIN") ? "<a href='scripts/delete_draft.php?draft={$template['draft_id']}' class='btn btn-sm obejor-bg-dark border text-white' title='Delete'><span class='fa fa-trash'></span></a>" : "" ;
-									echo "
+									echo <<<HTML
 									<div class='col-lg-3 col-11 my-2 mx-4'>
 
 										<div class='card'>
@@ -286,7 +295,7 @@ if ($templates['flag'] == true) {
 												<div class='btn-group my-2'>
 													<a href='campaign.sms.php' class='btn btn-sm obejor-bg-dark border text-white'>Campaign</a>
 												
-													<button class='btn btn-sm obejor-bg-dark border text-white'  onclick='previewTemplateCode(\"sms_code_body{$count}\");' data-toggle='modal' data-target='#previewBody'>Preview</button>
+													<button class='btn btn-sm obejor-bg-dark border text-white'  onclick="previewTemplateCode('sms_code_body{$count}');" data-toggle='modal' data-target='#previewBody'>Preview</button>
 
 													{$delete}
 												</div>
@@ -295,9 +304,15 @@ if ($templates['flag'] == true) {
 										</div>
 
 									</div>
-									";
+HTML;
 									$count++;
 								}
+							} else {
+								echo "
+								<div class='alert alert-info w-100 '>
+									No Drafts available
+								</div>
+								";
 							}
 						?>
 

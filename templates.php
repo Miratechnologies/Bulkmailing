@@ -181,7 +181,9 @@ if ($templates['flag'] == true) {
 								$count = 1;
 								foreach ($allTemplates as $template) {
 									$delete = ($role == "ADMIN") ? "<a href='scripts/delete_template.php?template={$template['template_id']}' class='btn btn-sm obejor-bg-dark border text-white' title='Delete'><span class='fa fa-trash'></span></a>" : "" ;
-									echo "
+									$template_type = $template['template_type'];
+									$description = $template['description'];
+									echo <<<HTML
 									<div class='col-lg-3 col-11 my-2 mx-4'>
 
 										<div class='card'>
@@ -196,11 +198,11 @@ if ($templates['flag'] == true) {
 												<textarea id='all_code_body{$count}' class='d-none'>{$template['body']}</textarea>
 												
 												<div class='btn-group my-2'>
-													<button class='btn btn-sm obejor-bg-dark border text-white' onclick='saveAsDraft(\"{$template['template_type']}\",\"{$template['description']}\",\"all_code_body{$count}\");'>Save As Draft</button>
+													<button class='btn btn-sm obejor-bg-dark border text-white' onclick='saveAsDraft("$template_type","$description","all_code_body{$count}");'>Save As Draft</button>
 
-													<button class='btn btn-sm obejor-bg-dark border text-white' onclick='previewTemplateCode(\"all_code_body{$count}\");' data-toggle='modal' data-target='#previewBody'>Preview</button>
+													<button class='btn btn-sm obejor-bg-dark border text-white' onclick='previewTemplateCode("all_code_body{$count}");' data-toggle='modal' data-target='#previewBody'>Preview</button>
 
-													<a href='edit_template.php?template={$template['template_id']}' class='btn btn-sm obejor-bg-dark border text-white' title='Edit'><span class='fa fa-edit'></span></a>
+													<a href="edit_template.php?template={$template['template_id']}" class='btn btn-sm obejor-bg-dark border text-white' title='Edit'><span class='fa fa-edit'></span></a>
 
 													{$delete}
 												</div>
@@ -208,9 +210,15 @@ if ($templates['flag'] == true) {
 										</div>
 
 									</div>
-									";
+HTML;
 									$count++;
 								}
+							} else {
+								echo "
+								<div class='alert alert-info w-100 '>
+									No Templates available
+								</div>
+								";
 							}
 						?>
 					</div>
@@ -226,7 +234,9 @@ if ($templates['flag'] == true) {
 								$count = 1;
 								foreach ($emailTemplates as $template) {
 									$delete = ($role == "ADMIN") ? "<a href='scripts/delete_template.php?template={$template['template_id']}' class='btn btn-sm obejor-bg-dark border text-white' title='Delete'><span class='fa fa-trash'></span></a>" : "" ;
-									echo "
+									$template_type = $template['template_type'];
+									$description = $template['description'];
+									echo <<<HTML
 									<div class='col-lg-3 col-11 my-2 mx-4'>
 
 										<div class='card'>
@@ -241,11 +251,11 @@ if ($templates['flag'] == true) {
 												<textarea id='email_code_body{$count}' class='d-none'>{$template['body']}</textarea>
 												
 												<div class='btn-group my-2'>
-													<button class='btn btn-sm obejor-bg-dark border text-white' onclick='saveAsDraft(\"{$template['template_type']}\",\"{$template['description']}\",\"all_code_body{$count}\");'>Save As Draft</button>
+													<button class='btn btn-sm obejor-bg-dark border text-white' onclick='saveAsDraft("$template_type","$description","email_code_body{$count}");'>Save As Draft</button>
 
-													<button class='btn btn-sm obejor-bg-dark border text-white' onclick='previewTemplateCode(\"email_code_body{$count}\");' data-toggle='modal' data-target='#previewBody'>Preview</button>
+													<button class='btn btn-sm obejor-bg-dark border text-white' onclick='previewTemplateCode("email_code_body{$count}");' data-toggle='modal' data-target='#previewBody'>Preview</button>
 
-													<a href='edit_template.php?template={$template['template_id']}' class='btn btn-sm obejor-bg-dark border text-white' title='Edit'><span class='fa fa-edit'></span></a>
+													<a href="edit_template.php?template={$template['template_id']}" class='btn btn-sm obejor-bg-dark border text-white' title='Edit'><span class='fa fa-edit'></span></a>
 
 													{$delete}
 												</div>
@@ -254,9 +264,15 @@ if ($templates['flag'] == true) {
 										</div>
 
 									</div>
-									";
+HTML;
 									$count++;
 								}
+							} else {
+								echo "
+								<div class='alert alert-info w-100 '>
+									No Templates available
+								</div>
+								";
 							}
 						?>
 					</div>
@@ -272,7 +288,9 @@ if ($templates['flag'] == true) {
 								$count = 1;
 								foreach ($smsTemplates as $template) {
 									$delete = ($role == "ADMIN") ? "<a href='scripts/delete_template.php?template={$template['template_id']}' class='btn btn-sm obejor-bg-dark border text-white' title='Delete'><span class='fa fa-trash'></span></a>" : "" ;
-									echo "
+									$template_type = $template['template_type'];
+									$description = $template['description'];
+									echo <<<HTML
 									<div class='col-lg-3 col-11 my-2 mx-4'>
 
 										<div class='card'>
@@ -287,11 +305,11 @@ if ($templates['flag'] == true) {
 												<textarea id='sms_code_body{$count}' class='d-none'>{$template['body']}</textarea>
 												
 												<div class='btn-group my-2'>
-													<button class='btn btn-sm obejor-bg-dark border text-white' onclick='saveAsDraft(\"{$template['template_type']}\",\"{$template['description']}\",\"all_code_body{$count}\");'>Save As Draft</button>
+													<button class='btn btn-sm obejor-bg-dark border text-white' onclick='saveAsDraft("$template_type","$description","sms_code_body{$count}");'>Save As Draft</button>
 
-													<button class='btn btn-sm obejor-bg-dark border text-white' onclick='previewTemplateCode(\"sms_code_body{$count}\");' data-toggle='modal' data-target='#previewBody'>Preview</button>
+													<button class='btn btn-sm obejor-bg-dark border text-white' onclick="previewTemplateCode('sms_code_body{$count}');" data-toggle='modal' data-target='#previewBody'>Preview</button>
 
-													<a href='edit_template.php?template={$template['template_id']}' class='btn btn-sm obejor-bg-dark border text-white' title='Edit'><span class='fa fa-edit'></span></a>
+													<a href="edit_template.php?template={$template['template_id']}" class='btn btn-sm obejor-bg-dark border text-white' title='Edit'><span class='fa fa-edit'></span></a>
 
 													{$delete}
 												</div>
@@ -300,9 +318,15 @@ if ($templates['flag'] == true) {
 										</div>
 
 									</div>
-									";
+HTML;
 									$count++;
 								}
+							} else {
+								echo "
+								<div class='alert alert-info w-100 '>
+									No Templates available
+								</div>
+								";
 							}
 						?>
 					</div>
