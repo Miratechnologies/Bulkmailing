@@ -299,7 +299,7 @@ function addFooter()
          <tr>
             <td colspan="2" align="center" style="color:rgb(88,58,3)">
                   <p><small> Want to stop receiving these type of email? You can <a
-                              href="">
+                              href="https://obejorgroup.com.ng/api/unsubscribe.php?email=[[EMAIL]]">
                               unsubscribe</a> from this list.</small></p>
             </td>
          </tr>

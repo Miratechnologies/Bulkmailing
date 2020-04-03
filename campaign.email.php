@@ -24,7 +24,7 @@ if ($templates['flag'] == true) {
 // 	$smsEmpty = true;
 // }
 
-$audiences = $model->getAllAudiences();
+$audiences = $model->getAllSubscribers();
 
 if ($audiences['flag'] == true) {
 	$audEmpty = false;

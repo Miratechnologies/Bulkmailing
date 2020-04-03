@@ -36,10 +36,10 @@ class DBModel extends DBConnection{
         }
     }
 
-    public function unSubscribeAudience($status, $email) {
-        $sql = "UPDATE audience_tbl SET subscription_status = ? WHERE email = $email";
+    public function unSubscribeAudience($email) {
+        $sql = "UPDATE audience_tbl SET subscription_status = 'UNSUBSCRBD' WHERE email = ?";
         $res = $this->conn->prepare($sql);
-        $res->bind_param("s",$status);
+        $res->bind_param("s",$email);
         $res = $res->execute();
         if ($res === true) {
             return true;
@@ -55,6 +55,18 @@ class DBModel extends DBConnection{
             return true;
         } else {
             return false;
+        }
+    }
+
+    public function getAllSubscribers() {
+        $sql = "SELECT * FROM audience_tbl WHERE subscription_status = 'SUBSCRIBED' ";
+        $res = $this->conn->query($sql);
+        if ($res->num_rows > 0) {
+            $data = $res->fetch_all(MYSQLI_ASSOC);
+            return ["flag"=>true,"data"=>$data];
+        } else {
+            $data = mysqli_error($this->conn);
+            return ["flag"=>false,"data"=>$data];
         }
     }
 
