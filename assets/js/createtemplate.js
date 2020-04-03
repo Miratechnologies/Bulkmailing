@@ -327,8 +327,103 @@ function addFooter()
    $("#"+selected).html(contents);
    clearSelect();
    setState();
-
 }
+
+function addRowAbove() 
+{
+   // How?
+   // Read the table id of the selected column
+   var currentRowId = $("#"+selected).parentsUntil("div")[2].id;
+
+   // increment the rows, hence using it as ID selected('row','row${rows}');
+   rows++;
+
+   var template =
+   `<table id="table${rows}" width="100%" cellspacing="0" cellpadding="0" style="vertical-align:middle">
+      <tbody >
+         <tr 
+            class="selectable"
+            onclick="select('row','row${rows}')" 
+            id="row${rows}" 
+            height="0px" 
+            style="
+            border: 0px solid #ffffff;
+            background-color: #ffffff;
+            "
+         >   
+            <td align="center" style="vertical-align: middle; margin: 2px;">ROW</td>
+         </tr>
+      </tbody>
+   </table>`;
+
+   // add the row above
+   $("#"+currentRowId).before(template);
+
+   // deselect
+   clearSelect();
+   // default select
+   select('row','row'+rows);
+   showAddColumns();
+
+   // default details
+   $("#rowBgColor").val("#ffffff");
+   $("#rowBorderWeight").val(0);
+   $("#rowBorderColor").val("#ffffff");
+   $("#rowHeight").val(0);
+
+   // show add row for subsequent rows
+   $("#btnShowRow").show();
+   setState();
+}
+
+
+function addRowBelow() 
+{
+   // How?
+   // Read the table id of the selected column
+   var currentRowId = $("#"+selected).parentsUntil("div")[2].id;
+
+   // increment the rows, hence using it as ID selected('row','row${rows}');
+   rows++;
+
+   var template =
+   `<table id="table${rows}" width="100%" cellspacing="0" cellpadding="0" style="vertical-align:middle">
+      <tbody >
+         <tr 
+            class="selectable"
+            onclick="select('row','row${rows}')" 
+            id="row${rows}" 
+            height="0px" 
+            style="
+            border: 0px solid #ffffff;
+            background-color: #ffffff;
+            "
+         >   
+            <td align="center" style="vertical-align: middle; margin: 2px;">ROW</td>
+         </tr>
+      </tbody>
+   </table>`;
+
+   // add the row above
+   $("#"+currentRowId).after(template);
+
+   // deselect
+   clearSelect();
+   // default select
+   select('row','row'+rows);
+   showAddColumns();
+
+   // default details
+   $("#rowBgColor").val("#ffffff");
+   $("#rowBorderWeight").val(0);
+   $("#rowBorderColor").val("#ffffff");
+   $("#rowHeight").val(0);
+
+   // show add row for subsequent rows
+   $("#btnShowRow").show();
+   setState();
+}
+
 
 function addRow ()
 {
@@ -342,7 +437,7 @@ function addRow ()
    var height = $("#rowHeight").val();
 
    var template =
-   `<table width="100%" cellspacing="0" cellpadding="0" style="vertical-align:middle">
+   `<table id="table${rows}" width="100%" cellspacing="0" cellpadding="0" style="vertical-align:middle">
       <tbody >
          <tr 
             class="selectable"

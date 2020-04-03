@@ -207,11 +207,19 @@ if ($get['flag'] == true) {
                </div>
                <div class="card-body">
                
-                  <button class="btn btn-dark btn-md" onclick="showContents();">Add Contents</button>
+                  <div class="row my-1">
+                     <button class="btn col-lg-5 mx-auto my-1 btn-dark btn-md" onclick="showContents();">Add Contents</button>
 
-                  <button class="btn btn-dark btn-md" onclick="showEditColumn();">Edit Column</button>
+                     <button class="btn col-lg-5 mx-auto my-1 btn-dark btn-md" onclick="showEditColumn();">Edit Column</button>
+                  </div>
 
-                  <button class="btn btn-danger btn-md float-right" onclick="remove()">Delete</button>
+                  <div class="row my-1">
+                     <button class="btn col-lg-5 mx-auto my-1 btn-dark btn-md" onclick="addRowAbove();">Add Items Above</button>
+
+                     <button class="btn col-lg-5 mx-auto my-1 btn-dark btn-md" onclick="addRowBelow();">Add Items Below</button>
+                  </div>
+
+                  <button class="btn btn-danger mt-2 btn-md float -right" onclick="remove()">Delete</button>
                </div>
             </div>
 
@@ -522,7 +530,7 @@ if ($get['flag'] == true) {
             </div>
 
             <div class="modal-footer">
-               <button class="btn btn-success btn-md"> <span class="fa fa-save"></span> Save Template </button>
+               <button class="btn btn-success btn-md" onclick="saveTemplate()"> <span class="fa fa-save"></span> Save Template </button>
             </div>
 
          </div>
