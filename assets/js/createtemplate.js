@@ -18,7 +18,9 @@ function hideAll ()
    $("#row-display").hide();
    $("#col-actions").hide();
    $("#cntt-actions").hide();
-   $("#sms_save").hide();
+   if (location.pathname != "/bulkmailings/edit_template.php" ){
+      $("#sms_save").hide();
+   }
    $("#editRow-display").hide();
    $("#addColumn-display").hide();
    $("#editColumn-display").hide();
@@ -34,6 +36,10 @@ function start ()
    textLinkAlignClicked('center');
    textLinkStyleClicked('normal');
    $("#btnShowRow").hide();
+
+   if (location.pathname == "/bulkmailings/edit_template.php" ){
+      $("#btnShowRow").show();
+   }
 }
 
 function showRow ()
@@ -947,8 +953,22 @@ function saveTemplate ()
    var templateForm = $("#templateForm");
    // var formData = new FormData(templateForm);
    // strip body
-   body = body.replace(`class="selectable"`,"");
-   body = body.replace(`class="selected"`,"");
+   // body = body.replace(`class="selectable"`,"");
+   // body = body.replace(`class="selected"`,"");
+
+   $("#email_body").val(body);
+      
+   templateForm.submit();
+}
+
+function updateTemplate ()
+{
+   var body = $("#template-pad").html();
+   var templateForm = $("#templateForm");
+   // var formData = new FormData(templateForm);
+   // strip body
+   // body = body.replace(`class="selectable"`,"");
+   // body = body.replace(`class="selected"`,"");
 
    $("#email_body").val(body);
       
@@ -959,8 +979,8 @@ function previewTemplate ()
 {
    var body = $("#template-pad").html();
    // strip body
-   body = body.replace(`class="selectable"`,"");
-   body = body.replace(`class="selected"`,"");
+   // body = body.replace('class="selectable"',"");
+   // body = body.replace('class="selected"',"");
    // ! Do it for all
    $("#bodyPreview").html(body);
 }

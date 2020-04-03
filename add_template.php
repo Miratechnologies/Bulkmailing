@@ -72,7 +72,8 @@ if ($get['flag'] == true) {
 
 <body class="bg-white">
 
-	<?php include 'header.php'; ?>
+   <?php include 'header.php'; ?>
+   <a href="templates.php" class="sticky-top btn btn-sm btn-dark ml-1 mb-0" style="margin-top: -100px;"> <span class="fa fa-arrow-left"></span> Back </a>
 
    <main class="row no-gutters">
 
@@ -588,8 +589,6 @@ if ($get['flag'] == true) {
          </div>
       </div>
    </div>
-
-   
 
 </body>
 </html>
