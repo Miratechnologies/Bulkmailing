@@ -1,2 +1,3 @@
 scripts/dbconnection.php
 vendor/
+storage/
