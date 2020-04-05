@@ -30,7 +30,7 @@ function hideAll ()
    $("#row-display").hide();
    $("#col-actions").hide();
    $("#cntt-actions").hide();
-   if (location.pathname != "/bulkmailings/edit_template.php" ){
+   if (location.pathname != "/edit_template.php" ){
       $("#sms_save").hide();
    }
    $("#editRow-display").hide();
@@ -49,7 +49,7 @@ function start ()
    textLinkStyleClicked('normal');
    $("#btnShowRow").hide();
 
-   if (location.pathname == "/bulkmailings/edit_template.php" ){
+   if (location.pathname == "/edit_template.php" ){
       $("#btnShowRow").show();
       
       var config = $("#email_template").attr("data-config");
