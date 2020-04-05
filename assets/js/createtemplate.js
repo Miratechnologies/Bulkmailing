@@ -5,6 +5,18 @@ var cntt = 0;
 var selects = [];
 var selected = null;
 
+// how do I allow these variables respond to editing, without saving them in the database?
+// when are they used?
+// rows, only to add content
+// cols, only to add content
+// cntt, for adding contents too
+// But, my fear is that ID's could clash, How?
+// A template is created already, this content has Id cntt1, ...
+// ...the template is now being edited, i add a new row and add a content, ...
+// ...the row, column and the content would have the same id
+// so what do we do?
+// I'd store the JSON encoded data in a data tag in the template header 😉💡
+
 $(document).ready(function(){
    start();
    setState();
@@ -39,6 +51,12 @@ function start ()
 
    if (location.pathname == "/bulkmailings/edit_template.php" ){
       $("#btnShowRow").show();
+      
+      var config = $("#email_template").attr("data-config");
+      config = JSON.parse(config);
+      rows = config.rows;
+      cols = config.cols;
+      cntt = config.cntt;
    }
 }
 
@@ -160,8 +178,8 @@ function redo()
 
 function createNewTemplate ()
 {
-   var template = 
-   `<div style="background-color:#fbf1f1;width:100%;margin:10px 0">
+   var template = //margin:10px 0
+   `<div id="email_template" data-config="" style="background-color:#fbf1f1;width:100%; margin-top: 20px; margin-bottom: 50px;">
       <table border="0" bgcolor="#e4e4e4" cellspacing="0" cellpadding="0" width="100%" style="font-family:'Helvetica Neue','Helvetica','Arial','sans-serif';font-size:13px">
          <tbody>
          <tr>
@@ -191,143 +209,552 @@ function createNewTemplate ()
 function addFooter()
 {
    var contents =
+   // `
+   // <table width="100%" cellspacing="0" cellpadding="0">
+   //    <tbody>
+   //       <tr>
+   //          <td style="background:rgb(241, 237, 237);padding: 15px 0;"></td>
+   //       </tr>
+   //    </tbody>
+   // </table>
+   // <!-- /For Spacing -->
+
+   // <!-- Footer -->
+   // <table width="100%" cellspacing="0" cellpadding="0"
+   //    style="background:rgb(241, 237, 237);">
+   //    <tbody>
+   //       <!-- Social Media Icons -->
+   //       <tr>
+   //          <td align="center" colspan="2" style="margin-top:5em">
+   //                <a href="https://www.facebook.com/Obejorcom-2335973039767186/"
+   //                   style="text-decoration:none" target="_blank">
+   //                   <img src="http://nglohitech.com/framework/images/templatesimages/facebook.png"
+   //                      alt="Facebook Handle" width="30px" height="30px">
+   //                </a>
+   //                <span style="padding-right: 10px;"></span>
+   //                <a href="https://twitter.com/ObejorNigeria"
+   //                   style="text-decoration:none" target="_blank">
+   //                   <img src="http://nglohitech.com/framework/images/templatesimages/twitter.png"
+   //                      alt="Twitter Handle" width="30px" height="30px">
+   //                </a>
+   //                <span style="padding-right: 10px;"></span>
+   //                <a href="https://www.youtube.com/channel/UCwN0kOwuSlkxU9v4E-UEZog?view_as=subscriber"
+   //                   style="text-decoration:none" target="_blank">
+   //                   <img src="http://nglohitech.com/framework/images/templatesimages/youtube.png"
+   //                      alt="Youtube Handle" width="30px" height="30px">
+   //                </a>
+   //                <span style="padding-right: 10px;"></span>
+   //                <a href="https://www.instagram.com/obejoronline_store/"
+   //                   style="text-decoration:none" target="_blank">
+   //                   <img src="http://nglohitech.com/framework/images/templatesimages/instagram.png"
+   //                      alt="Instagram Handle" width="30px" height="30px">
+   //                </a>
+   //                <span style="padding-right: 10px;"></span>
+   //                <a href="https://www.linkedin.com/company/obejorstore"
+   //                   style="text-decoration:none" target="_blank">
+   //                   <img src="http://nglohitech.com/framework/images/templatesimages/linkedin.png"
+   //                      alt="Linkedin Handle" width="30px" height="30px">
+   //                </a>
+   //          </td>
+   //       </tr>
+   //       <!-- For Spacing -->
+   //       <tr>
+   //          <td style="padding: 15px 0;"></td>
+   //       </tr>
+   //       <!-- Footer Links -->
+   //       <tr align='center' style="text-align:center;background-color:white">
+   //          <td colspan="2"
+   //                style="border-top:1px solid orange;border-bottom:1px solid orange">
+   //                <p style="padding:1em 0">
+   //                   <a href="https://www.obejor.com.ng/about-us"
+   //                      style="padding:0 20px" target="_blank">About Us</a>
+   //                   <a href="https://obejorblog.com/" style="padding:0 20px"
+   //                      target="_blank">Blog</a>
+   //                   <a href="https://www.obejor.com.ng/ocmultivendor/sellerlogin"
+   //                      style="padding:0 20px" target="_blank">Seller
+   //                      Login</a>
+   //                   <a href="https://www.obejor.com.ng/returns-policy"
+   //                      style="padding:0 20px" target="_blank">Return
+   //                      Policy</a>
+   //                   <a href="https://www.obejor.com.ng/terms-condition"
+   //                      style="padding:0 20px" target="_blank">Terms and
+   //                      Condition</a>
+   //                </p>
+   //          </td>
+   //       </tr>
+   //       <!-- For Spacing -->
+   //       <tr>
+   //          <td style="padding: 20px 0;"></td>
+   //       </tr>
+   //       <!-- Address | Contact -->
+   //       <tr>
+   //          <td align="center">
+   //                <p>16 Adepele Street, Computer Village, Ikeja, Lagos State, Nigeria
+   //                </p>
+   //                <p> Email: <a href="mailto:sales@obejor.com"> sales@obejor.com,</a>
+   //                   <a href="mailto:help@obejor.com">
+   //                      help@obejor.com.</a></p>
+   //          </td>
+
+   //          <!-- Contact Us -->
+   //          <td align="center">
+   //                <p>
+   //                   Phone No:<a href='tel:+234-70-40002622'> +2347040002622</a>, <a
+   //                      href='tel:+234-70-40002422 '>
+   //                      +2347040002422</a> </p>
+   //                <p>
+   //                   Whatsapp: <a
+   //                      href="https://api.whatsapp.com/send?phone=+2347040002622">
+   //                      07040002622</a>.</p>
+   //          </td>
+   //       </tr>
+   //       <!-- For Spacing -->
+   //       <tr>
+   //          <td colspan="2" style="padding: 30px 0;"></td>
+   //       </tr>
+
+   //       <!-- unsubscribe -->
+   //       <tr>
+   //          <td colspan="2" align="center" style="color:rgb(88,58,3)">
+   //                <p><small> Want to stop receiving these type of email? You can <a
+   //                            href="https://obejorgroup.com.ng/api/unsubscribe.php?email=[[EMAIL]]">
+   //                            unsubscribe</a> from this list.</small></p>
+   //          </td>
+   //       </tr>
+
+   //       <!-- For Spacing -->
+   //       <tr>
+   //          <td colspan="2" style="padding: 15px 0;"></td>
+   //       </tr>
+   //       <!-- play_store and apple_store icons -->
+   //       <tr>
+   //          <td align="center" colspan="2">
+   //                <a
+   //                   href="https://play.google.com/store/apps/details?id=com.obejor.app">
+   //                   <img src="http://nglohitech.com/framework/images/templatesimages/googlePlay.png"
+   //                      alt="">
+   //                </a>       
+   //                <a href="">
+   //                   <img src="http://nglohitech.com/framework/images/templatesimages/appleStore.png"
+   //                      alt="">
+   //                </a>
+   //          </td>
+   //       </tr>
+   //       <!-- For Spacing -->
+   //       <tr>
+   //          <td colspan="2" style="padding: 15px 0;"></td>
+   //       </tr>
+   //    </tbody>
+   // </table>
+   // `;
+
    `
-   <table width="100%" cellspacing="0" cellpadding="0">
-      <tbody>
-         <tr>
-            <td style="background:rgb(241, 237, 237);padding: 15px 0;"></td>
-         </tr>
-      </tbody>
-   </table>
-   <!-- /For Spacing -->
+   <div>
+         <table width="100%" cellspacing="0" cellpadding="0"
+            style="vertical-align:middle">
+            <tbody>
+               <tr height="0px" style="
+      border: 0px solid #ffffff;
+      background-color: #ffffff;
+      ">
+               </tr>
+            </tbody>
+         </table>
+         <table width="100%" cellspacing="0" cellpadding="0"
+            style="vertical-align:middle">
+            <tbody>
+               <tr height="0px" style="
+      border: 0px solid #ffffff;
+      background-color: #ffffff;
+      ">
+                  <td
+                     height="50px" width="20%" ;="" style="
+      padding: 0px 0px;
+      border: 0px solid #ffffff;
+      background-color: #dddddd;
+      ">
+                     <p
+                        style="margin: 0px 0px; overflow: auto;">
+                        <a href="https://www.facebook.com/Obejorcom-2335973039767186/"
+                           target="_blank">
+                           <img src="https://obejorgroup.com.ng/storage/images/523291.png"
+                              width="20%" height="20%" align="middle" style="padding: 0% 0%; "
+                              alt="Facebook Logo">
+                        </a>
+                     </p>
+                  </td>
+                  <td
+                     height="50px" width="20%" ;="" style="
+      padding: 0px 0px;
+      border: 0px solid #ffffff;
+      background-color: #dddddd;
+      ">
+                     <p
+                        style="margin: 0px 0px; overflow: auto;">
+                        <a href="https://twitter.com/ObejorNigeria" target="_blank">
+                           <img src="https://obejorgroup.com.ng/storage/images/9aa70a.png"
+                              width="20%" height="20%" align="middle" style="padding: 0% 0%; "
+                              alt="Twitter Logo">
+                        </a>
+                     </p>
+                  </td>
+                  <td
+                     height="50px" width="20%" ;="" style="
+      padding: 0px 0px;
+      border: 0px solid #ffffff;
+      background-color: #dddddd;
+      ">
+                     <p
+                        style="margin: 0px 0px; overflow: auto;">
+                        <a href="https://www.youtube.com/channel/UCwN0kOwuSlkxU9v4E-UEZog?view_as=subscriber"
+                           target="_blank">
+                           <img src="https://obejorgroup.com.ng/storage/images/0f72a4.png"
+                              width="20%" height="20%" align="middle" style="padding: 0% 0%; "
+                              alt="Youtube Logo">
+                        </a>
+                     </p>
+                  </td>
+                  <td
+                     height="50px" width="20%" ;="" style="
+      padding: 0px 0px;
+      border: 0px solid #ffffff;
+      background-color: #dddddd;
+      ">
+                     <p
+                        style="margin: 0px 0px; overflow: auto;">
+                        <a href="https://www.instagram.com/obejoronline_store/" target="_blank">
+                           <img src="https://obejorgroup.com.ng/storage/images/bdc311.png"
+                              width="20%" height="20%" align="middle" style="padding: 0% 0%; "
+                              alt="Instagram Logo">
+                        </a>
+                     </p>
+                  </td>
+                  <td
+                     height="50px" width="20%" ;="" style="
+      padding: 0px 0px;
+      border: 0px solid #ffffff;
+      background-color: #dddddd;
+      ">
+                     <p
+                        style="margin: 0px 0px; overflow: auto;">
+                        <a href="https://www.linkedin.com/company/obejorstore" target="_blank">
+                           <img src="https://obejorgroup.com.ng/storage/images/623082.png"
+                              width="20%" height="20%" align="middle" style="padding: 0% 0%; "
+                              alt="LinkedIn Logo">
+                        </a>
+                     </p>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+         <table width="100%" cellspacing="0" cellpadding="0"
+            style="vertical-align:middle">
+            <tbody>
+               <tr height="0px" style="
+      border: 0px solid #ffffff;
+      background-color: #ffffff;
+      ">
+                  <td
+                     height="50px" width="20%" ;="" style="
+      padding: 0px 0px;
+      border: 1px solid #ee2d11;
+      background-color: #ffffff;
+      ">
+                     <p
+                        style="
+      margin: 0px 0px !important;
+      ">
+                        <a href="https://www.obejor.com.ng/about-us" target="_blank" style="
+      font-family: Verdana, Geneva, Tahoma, sans-serif;; 
+      font-size: 10px; 
+      color: #000000; 
+      font-weight: 400; 
+      padding: 2% 2%; 
+      margin: 0px 0px !important;
+      text-align: center; 
+      font-style: normal; text-decoration: none;
+      ">
+                           About Us
+                        </a>
+                     </p>
+                  </td>
+                  <td
+                     height="50px" width="20%" ;="" style="
+      padding: 0px 0px;
+      border: 1px solid #ee2d11;
+      background-color: #ffffff;
+      ">
+                     <p
+                        style="
+      margin: 0px 0px !important;
+      ">
+                        <a href="https://obejorblog.com/" target="_blank" style="
+      font-family: Verdana, Geneva, Tahoma, sans-serif;; 
+      font-size: 10px; 
+      color: #000000; 
+      font-weight: 400; 
+      padding: 2% 2%; 
+      margin: 0px 0px !important;
+      text-align: center; 
+      font-style: normal; text-decoration: none;
+      ">
+                           Blog
+                        </a>
+                     </p>
+                  </td>
+                  <td
+                     height="50px" width="20%" ;="" style="
+      padding: 0px 0px;
+      border: 1px solid #ee2d11;
+      background-color: #ffffff;
+      ">
+                     <p
+                        style="
+      margin: 0px 0px !important;
+      ">
+                        <a href="https://www.obejor.com.ng/ocmultivendor/sellerlogin" target="_blank"
+                           style="
+      font-family: Verdana, Geneva, Tahoma, sans-serif;; 
+      font-size: 10px; 
+      color: #000000; 
+      font-weight: 400; 
+      padding: 2% 2%; 
+      margin: 0px 0px !important;
+      text-align: center; 
+      font-style: normal; text-decoration: none;
+      ">
+                           Seller Login
+                        </a>
+                     </p>
+                  </td>
+                  <td
+                     height="50px" width="20%" ;="" style="
+      padding: 0px 0px;
+      border: 1px solid #ee2d11;
+      background-color: #ffffff;
+      ">
+                     <p
+                        style="
+      margin: 0px 0px !important;
+      ">
+                        <a href="https://www.obejor.com.ng/returns-policy" target="_blank" style="
+      font-family: Verdana, Geneva, Tahoma, sans-serif;; 
+      font-size: 10px; 
+      color: #000000; 
+      font-weight: 400; 
+      padding: 2% 2%; 
+      margin: 0px 0px !important;
+      text-align: center; 
+      font-style: normal; text-decoration: none;
+      ">
+                           Return Policy
+                        </a>
+                     </p>
+                  </td>
+                  <td
+                     height="50px" width="20%" ;="" style="
+      padding: 0px 0px;
+      border: 1px solid #ee2d11;
+      background-color: #ffffff;
+      ">
+                     <p
+                        style="
+      margin: 0px 0px !important;
+      ">
+                        <a href="https://www.obejor.com.ng/terms-condition" target="_blank" style="
+      font-family: Verdana, Geneva, Tahoma, sans-serif;; 
+      font-size: 10px; 
+      color: #000000; 
+      font-weight: 400; 
+      padding: 2% 2%; 
+      margin: 0px 0px !important;
+      text-align: center; 
+      font-style: normal; text-decoration: none;
+      ">
+                           Terms and Condition
+                        </a>
+                     </p>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+         <table width="100%" cellspacing="0" cellpadding="0"
+            style="vertical-align:middle">
+            <tbody>
+               <tr height="100px" style="
+      border: 0px solid #ffffff;
+      background-color: #ffffff;
+      ">
+                  <td height="0px"
+                     width="50%" ;="" style="background-color:#dddddd;border:0px solid #ffffff;">
+                     <p style="
+      font-family: Verdana, Geneva, Tahoma, sans-serif;; 
+      font-size: 14px; 
+      color: #000000; 
+      font-weight: 400; 
+      padding: 0px 0px; 
+      margin: 0px 0px !important;
+      text-align: center; 
+      font-style: normal; 
+      ">
+                        16 Adepele Street, Computer Village, Ikeja, Lagos State, Nigeria
+                     </p>
+                  </td>
+                  <td height="0px"
+                     width="50%" ;="" style="background-color:#dddddd;border:0px solid #ffffff;">
+                     <p
+                        style="
+      font-family: Verdana, Geneva, Tahoma, sans-serif;; 
+      font-size: 14px; 
+      color: #000000; 
+      font-weight: 400; 
+      padding: 0px 5px; 
+      margin: 0px 0px !important;
+      text-align: center; 
+      font-style: normal; 
+      ">
+                        Phone No: <a href='tel:+234-70-40002622'>+2347040002622</a>, <a
+                           href='tel:+234-70-40002422'>+2347040002422</a>
+                     </p>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+         <table width="100%" cellspacing="0" cellpadding="0"
+            style="vertical-align:middle">
+            <tbody>
+               <tr height="0px" style="
+      border: 0px solid #ffffff;
+      background-color: #ffffff;
+      ">
+                  <td
+                     height="55px" width="60%" ;=""
+                     style="background-color:#dddddd;border:0px solid #ffffff;">
+                     <p style="
+      font-family: Verdana, Geneva, Tahoma, sans-serif;; 
+      font-size: 14px; 
+      color: #000000; 
+      font-weight: 400; 
+      padding: 0px 0px; 
+      margin: 0px 0px !important;
+      text-align: center; 
+      font-style: normal; 
+      ">
+                        Email: <a href="mailto:sales@obejor.com">sales@obejor.com</a>, <a
+                           href="mailto:help@obejor.com">help@obejor.com.</a. </p>
+                  </td>
+                  <td
+                     height="55px" width="60%" ;=""
+                     style="background-color:#dddddd;border:0px solid #ffffff;">
+                     <p style="
+      font-family: Verdana, Geneva, Tahoma, sans-serif;; 
+      font-size: 14px; 
+      color: #000000; 
+      font-weight: 400; 
+      padding: 0px 0px; 
+      margin: 0px 0px !important;
+      text-align: center; 
+      font-style: normal; 
+      ">
+                        Whatsapp: <a
+                           href="https://api.whatsapp.com/send?phone=+2347040002622">07040002622.</a>
+                     </p>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+         <table width="100%" cellspacing="0" cellpadding="0"
+            style="vertical-align:middle">
+            <tbody>
+               <tr height="40px"
+                  style="background-color:#ffffff;border:0px solid #ffffff;">
+                  <td
+                     height="100px" width="60%" ;=""
+                     style="background-color:#dddddd;border:0px solid #ffffff;">
+                     <p style="
+      font-family: Verdana, Geneva, Tahoma, sans-serif;; 
+      font-size: 12px; 
+      color: #000000; 
+      font-weight: 400; 
+      padding: 0px 0px; 
+      margin: 0px 0px !important;
+      text-align: center; 
+      font-style: normal; 
+      ">
+                        Want to stop receiving these type of email? You can <a
+                           href="https://obejorgroup.com.ng/api/unsubscribe?email=[[EMAIL]]">unsubscribe</a>
+                        from this list.
+                     </p>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+         <table width="100%" cellspacing="0" cellpadding="0"
+            style="vertical-align:middle">
+            <tbody>
+               <tr height="0px" style="
+      border: 0px solid #ffffff;
+      background-color: #ffffff;
+      ">
+                  <td
+                     height="55px" width="50%" ;=""
+                     style="background-color:#dddddd;border:0px solid #ffffff;">
+                     <p
+                        style="margin: 0px 0px; overflow: auto;">
+                        <a href="https://play.google.com/store/apps/details?id=com.obejor.app"
+                           target="_blank">
+                           <img src="https://obejorgroup.com.ng/storage/images/googlePlay.png"
+                              width="40%" height="100%" align="right" style="padding: 0% 5%; "
+                              alt="Google Play">
+                        </a>
+                     </p>
+                  </td>
+                  <td
+                     height="55px" width="50%" ;=""
+                     style="background-color:#dddddd;border:0px solid #ffffff;">
+                     <p
+                        style="margin: 0px 0px; overflow: auto;">
+                        <a href="" target="_blank">
+                           <img src="https://obejorgroup.com.ng/storage/images/appleStore.png"
+                              width="40%" height="100%" align="left" style="padding: 0% 5%; "
+                              alt="Apple Store">
+                        </a>
+                     </p>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+         <table width="100%" cellspacing="0" cellpadding="0"
+            style="vertical-align:middle">
+            <tbody>
+               <tr height="0px" style="
+      border: 0px solid #ffffff;
+      background-color: #ffffff;
+      ">
+                  <td
+                     height="100px" width="100%" ;="" style="
+      padding: 0px 0px;
+      border: 0px solid #ffffff;
+      background-color: #dddddd;
+      ">
+                     <p
+                        style="
+      font-family: Verdana, Geneva, Tahoma, sans-serif;; 
+      font-size: 14px; 
+      color: #000000; 
+      font-weight: 400; 
+      padding: 0px 5px; 
+      margin: 0px 0px !important;
+      text-align: center; 
+      font-style: normal; 
+      ">
 
-   <!-- Footer -->
-   <table width="100%" cellspacing="0" cellpadding="0"
-      style="background:rgb(241, 237, 237);">
-      <tbody>
-         <!-- Social Media Icons -->
-         <tr>
-            <td align="center" colspan="2" style="margin-top:5em">
-                  <a href="https://www.facebook.com/Obejorcom-2335973039767186/"
-                     style="text-decoration:none" target="_blank">
-                     <img src="http://nglohitech.com/framework/images/templatesimages/facebook.png"
-                        alt="Facebook Handle" width="30px" height="30px">
-                  </a>
-                  <span style="padding-right: 10px;"></span>
-                  <a href="https://twitter.com/ObejorNigeria"
-                     style="text-decoration:none" target="_blank">
-                     <img src="http://nglohitech.com/framework/images/templatesimages/twitter.png"
-                        alt="Twitter Handle" width="30px" height="30px">
-                  </a>
-                  <span style="padding-right: 10px;"></span>
-                  <a href="https://www.youtube.com/channel/UCwN0kOwuSlkxU9v4E-UEZog?view_as=subscriber"
-                     style="text-decoration:none" target="_blank">
-                     <img src="http://nglohitech.com/framework/images/templatesimages/youtube.png"
-                        alt="Youtube Handle" width="30px" height="30px">
-                  </a>
-                  <span style="padding-right: 10px;"></span>
-                  <a href="https://www.instagram.com/obejoronline_store/"
-                     style="text-decoration:none" target="_blank">
-                     <img src="http://nglohitech.com/framework/images/templatesimages/instagram.png"
-                        alt="Instagram Handle" width="30px" height="30px">
-                  </a>
-                  <span style="padding-right: 10px;"></span>
-                  <a href="https://www.linkedin.com/company/obejorstore"
-                     style="text-decoration:none" target="_blank">
-                     <img src="http://nglohitech.com/framework/images/templatesimages/linkedin.png"
-                        alt="Linkedin Handle" width="30px" height="30px">
-                  </a>
-            </td>
-         </tr>
-         <!-- For Spacing -->
-         <tr>
-            <td style="padding: 15px 0;"></td>
-         </tr>
-         <!-- Footer Links -->
-         <tr align='center' style="text-align:center;background-color:white">
-            <td colspan="2"
-                  style="border-top:1px solid orange;border-bottom:1px solid orange">
-                  <p style="padding:1em 0">
-                     <a href="https://www.obejor.com.ng/about-us"
-                        style="padding:0 20px" target="_blank">About Us</a>
-                     <a href="https://obejorblog.com/" style="padding:0 20px"
-                        target="_blank">Blog</a>
-                     <a href="https://www.obejor.com.ng/ocmultivendor/sellerlogin"
-                        style="padding:0 20px" target="_blank">Seller
-                        Login</a>
-                     <a href="https://www.obejor.com.ng/returns-policy"
-                        style="padding:0 20px" target="_blank">Return
-                        Policy</a>
-                     <a href="https://www.obejor.com.ng/terms-condition"
-                        style="padding:0 20px" target="_blank">Terms and
-                        Condition</a>
-                  </p>
-            </td>
-         </tr>
-         <!-- For Spacing -->
-         <tr>
-            <td style="padding: 20px 0;"></td>
-         </tr>
-         <!-- Address | Contact -->
-         <tr>
-            <td align="center">
-                  <p>16 Adepele Street, Computer Village, Ikeja, Lagos State, Nigeria
-                  </p>
-                  <p> Email: <a href="mailto:sales@obejor.com"> sales@obejor.com,</a>
-                     <a href="mailto:help@obejor.com">
-                        help@obejor.com.</a></p>
-            </td>
-
-            <!-- Contact Us -->
-            <td align="center">
-                  <p>
-                     Phone No:<a href='tel:+234-70-40002622'> +2347040002622</a>, <a
-                        href='tel:+234-70-40002422 '>
-                        +2347040002422</a> </p>
-                  <p>
-                     Whatsapp: <a
-                        href="https://api.whatsapp.com/send?phone=+2347040002622">
-                        07040002622</a>.</p>
-            </td>
-         </tr>
-         <!-- For Spacing -->
-         <tr>
-            <td colspan="2" style="padding: 30px 0;"></td>
-         </tr>
-
-         <!-- unsubscribe -->
-         <tr>
-            <td colspan="2" align="center" style="color:rgb(88,58,3)">
-                  <p><small> Want to stop receiving these type of email? You can <a
-                              href="https://obejorgroup.com.ng/api/unsubscribe.php?email=[[EMAIL]]">
-                              unsubscribe</a> from this list.</small></p>
-            </td>
-         </tr>
-
-         <!-- For Spacing -->
-         <tr>
-            <td colspan="2" style="padding: 15px 0;"></td>
-         </tr>
-         <!-- play_store and apple_store icons -->
-         <tr>
-            <td align="center" colspan="2">
-                  <a
-                     href="https://play.google.com/store/apps/details?id=com.obejor.app">
-                     <img src="http://nglohitech.com/framework/images/templatesimages/googlePlay.png"
-                        alt="">
-                  </a>       
-                  <a href="">
-                     <img src="http://nglohitech.com/framework/images/templatesimages/appleStore.png"
-                        alt="">
-                  </a>
-            </td>
-         </tr>
-         <!-- For Spacing -->
-         <tr>
-            <td colspan="2" style="padding: 15px 0;"></td>
-         </tr>
-      </tbody>
-   </table>
+                     </p>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+   </div>
    `;
 
    $("#"+selected).html(contents);
@@ -345,7 +772,7 @@ function addRowAbove()
    rows++;
 
    var template =
-   `<table id="table${rows}" width="100%" cellspacing="0" cellpadding="0" style="vertical-align:middle">
+   `<table id="table${rows}" width="100%" cellspacing="0" cellpadding="0" style="vertical-align:middle;">
       <tbody >
          <tr 
             class="selectable"
@@ -949,29 +1376,42 @@ function clearContent ()
 
 function saveTemplate ()
 {
+   // set the configuration details
+   var config = {
+      rows: rows,
+      cols: cols,
+      cntt: cntt
+   };
+   config = JSON.stringify(config);
+   $("#email_template").attr("data-config",config)
+
    var body = $("#template-pad").html();
    var templateForm = $("#templateForm");
-   // var formData = new FormData(templateForm);
-   // strip body
-   // body = body.replace(`class="selectable"`,"");
-   // body = body.replace(`class="selected"`,"");
 
    $("#email_body").val(body);
-      
+   
+   // go ahead and submit form
    templateForm.submit();
+
 }
 
 function updateTemplate ()
 {
+   // set the configuration details
+   var config = {
+      rows: rows,
+      cols: cols,
+      cntt: cntt
+   };
+   config = JSON.stringify(config);
+   $("#email_template").attr("data-config",config)
+
    var body = $("#template-pad").html();
    var templateForm = $("#templateForm");
-   // var formData = new FormData(templateForm);
-   // strip body
-   // body = body.replace(`class="selectable"`,"");
-   // body = body.replace(`class="selected"`,"");
 
    $("#email_body").val(body);
-      
+   
+   // go ahead and submit form
    templateForm.submit();
 }
 

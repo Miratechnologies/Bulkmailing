@@ -11,7 +11,7 @@ include '../scripts/validation.php';
 $validation = new Validation();
 
 if ($validation->validateEmail($email,10,50) == false) {
-   die(json_encode(["flag"=>false,"msg"=>"Invalid Email."]));
+   die("Invalid Email Acount.");
 } else {
    $email = $validation->sanitize($email);
 

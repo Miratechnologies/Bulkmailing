@@ -14,7 +14,7 @@ if (isset($inputs['submit_add_template'])) {
    // Get Inputs
    $template_type = $inputs['template_type'];
    $description = $inputs['template_description'];
-   $body = isset($inputs['email_body']) ? $inputs['email_body'] : $inputs['sms_body'] ;
+   $body = isset($inputs['email_body']) && trim($inputs['email_body']) != "" ? $inputs['email_body'] : $inputs['sms_body'] ;
 
    // Validate Inputs & Sanitize Inputs
 
@@ -78,7 +78,7 @@ if ($get['flag'] == true) {
    <main class="row no-gutters">
 
       <section class="position-fixed col-lg-8 bg-muted border" style="width: 70%; height: 90%;">
-         <div id="template-pad" class="position-fixed scrollable cursor-pointer" style="width:66.5%; height: 90%;">
+         <div id="template-pad" class="mb-5 position-fixed scrollable cursor-pointer" style="width:66.5%; height: 90%;"> 
             
          </div>
       </section>
@@ -348,7 +348,7 @@ if ($get['flag'] == true) {
                            <textarea id="textLinkContentText" class="form-control" cols="10" rows="3" placeholder="Enter Text..."></textarea>
                            <span><b>For Recipient Placeholder,</b><br>Use <b>[[NAME]]</b> for the recipient's name<br>Use <b>[[EMAIL]]</b> for the recipient's email</span><br><br>
                            
-                           <label for="textLinkContentLink" class=""><span class="fa fa-link"></span> Text Link</label> <br>
+                           <label for="textLinkContentLink" class=""><span class="fa fa-link"></span> Link</label> <br>
                            <input id="textLinkContentLink" class="form-control" placeholder="http://www.address.com"><br>
 
                            <label for="textLinkContentFamily">Font Family</label> <br>
@@ -456,7 +456,7 @@ if ($get['flag'] == true) {
                            <button data-toggle="modal" data-target="#selectImage" onclick="setImageSelector('imgLinkContentSrcDisplay')" class="btn btn-md btn-secondary">Select Image</button>
                            <span class="font-weight-bold" id="imgLinkContentSrcDisplay">No Image</span> <br><br>
 
-                           <label for="imageLinkContentLink" class=""><span class="fa fa-link"></span> Text Link</label> <br>
+                           <label for="imageLinkContentLink" class=""><span class="fa fa-link"></span> Link</label> <br>
                            <input id="imageLinkContentLink" class="form-control" placeholder="http://www.address.com"><br>
 
                            <label for="imgLinkContentHeight">Image Height</label> <span class="font-weight-bold" id="imgLinkContentHeightDisplay"></span> <br>
