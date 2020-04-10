@@ -144,10 +144,10 @@ if ($prefs['flag'] == true) {
 				<div class="mx-lg-5 mx-sm-auto text-dark display-4">
 					Settings
 
-					<button class="btn mt-4 obejor-bg-dark text-white float-right" data-toggle="modal" data-target="#addSetting">
+					<!-- <button class="btn mt-4 obejor-bg-dark text-white float-right" data-toggle="modal" data-target="#addSetting">
 						<span class="fa fa-plus"></span>
 						Add Setting
-					</button>
+					</button> -->
 
 				</div>
 

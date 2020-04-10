@@ -171,7 +171,7 @@ class scheduler
 	}
 }
 
-// (new Scheduler());
+(new Scheduler());
 
 ?>
 
