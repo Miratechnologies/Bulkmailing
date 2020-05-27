@@ -1,3 +1,4 @@
 scripts/dbconnection.php
 vendor/
 storage/
+.htaccess
