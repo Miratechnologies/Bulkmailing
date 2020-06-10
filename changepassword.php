@@ -60,7 +60,7 @@ if (isset($inputs['reset'])) {
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <title>Change Password | BulkMailing</title>
 
-   <!-- Jquery -->
+   <link rel="shortcut icon" href="assets/imgs/favicon.png" type="image/x-icon"><!-- Jquery -->
    <script src="assets/js/jquery.min.js"></script>
    <!-- Popper -->
    <script src="assets/js/popper.min.js"></script>
@@ -76,7 +76,7 @@ if (isset($inputs['reset'])) {
 <body class="bg-white" onload="hidePassword();">
 
    <nav class="navbar navbar-expand-md navbar-dark obejor-bg-dark sticky-top">
-		<a class="navbar-brand active ml-3 h1 mt-1" href="index.php"> <span class="fa fa-envelope-o"></span> Obejor Bulk Mailing & SMS</a>
+		<a class="navbar-brand active ml-3 h1 mt-1" href="index.php"> <img src="assets/imgs/favicon.png" alt="Obejor Logo" width="30"> Obejor Bulk Mailing & SMS</a>
 		<!-- <button class="navbar-toggler text-dark" type="button" data-toggle="collapse" data-target="#navbarText"
 			aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>

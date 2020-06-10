@@ -41,6 +41,23 @@
             </li>
 
             <li class="nav-item d-flex justify-content-between align-items-center my-2">
+               <?php 
+               if ($nav == "DRAFTS") {
+                  echo '<a class="nav-link text-light obejor-bg-dark w-100 rounded-right" href="drafts.php">';
+               } else {
+                  echo '<a class="nav-link text-dark" href="drafts.php">';
+               }
+               ?>
+                  <span class="badge">
+                     <span class="fa fa-2x fa-archive"></span>
+                  </span>
+                  <span class="text-lg mt-2 ml-1">
+                     Drafts
+                  </span>
+               </a>
+            </li>
+
+            <li class="nav-item d-flex justify-content-between align-items-center my-2">
                <?php
                if ($nav == "AUDIENCE") {
                   echo '<a class="nav-link text-light obejor-bg-dark w-100 rounded-right" href="audience.php">';
@@ -91,14 +108,14 @@
                </a>
             </li>
 
-            <li class="nav-item d-flex justify-content-between align-items-center my-2">
-               <?php 
-               if ($nav == "TEMPLATES") {
-                  echo '<a class="nav-link text-light obejor-bg-dark w-100 rounded-right" href="templates.php">';
-               } else {
-                  echo '<a class="nav-link text-dark" href="templates.php">';
-               }
-               ?>
+            <!-- <li class="nav-item d-flex justify-content-between align-items-center my-2">
+               < ?php 
+               // if ($nav == "TEMPLATES") {
+               //    echo '<a class="nav-link text-light obejor-bg-dark w-100 rounded-right" href="templates.php">';
+               // } else {
+               //    echo '<a class="nav-link text-dark" href="templates.php">';
+               // }
+               ? >
                   <span class="badge">
                      <span class="fa fa-2x fa-folder"></span>
                   </span>
@@ -106,24 +123,7 @@
                      Templates
                   </span>
                </a>
-            </li>
-
-            <li class="nav-item d-flex justify-content-between align-items-center my-2">
-               <?php 
-               if ($nav == "DRAFTS") {
-                  echo '<a class="nav-link text-light obejor-bg-dark w-100 rounded-right" href="drafts.php">';
-               } else {
-                  echo '<a class="nav-link text-dark" href="drafts.php">';
-               }
-               ?>
-                  <span class="badge">
-                     <span class="fa fa-2x fa-archive"></span>
-                  </span>
-                  <span class="text-lg mt-2 ml-1">
-                     Drafts
-                  </span>
-               </a>
-            </li>
+            </li> -->
 
             <li class="nav-item d-flex justify-content-between align-items-center my-2">
                <?php 
@@ -226,6 +226,23 @@
 
          <li class="nav-item d-flex justify-content-between align-items-center my-2">
             <?php 
+            if ($nav == "DRAFTS") {
+               echo '<a class="nav-link text-light obejor-bg-dark w-100 rounded-right" href="drafts.php">';
+            } else {
+               echo '<a class="nav-link text-dark" href="drafts.php">';
+            }
+            ?>
+               <span class="badge">
+                  <span class="fa fa-2x fa-archive"></span>
+               </span>
+               <span class="text-lg mt-2 ml-1">
+                  Drafts
+               </span>
+            </a>
+         </li>
+
+         <li class="nav-item d-flex justify-content-between align-items-center my-2">
+            <?php 
             if ($nav == "AUDIENCE") {
                echo '<a class="nav-link text-light obejor-bg-dark w-100 rounded-right" href="audience.php">';
             } else {
@@ -275,13 +292,13 @@
             </a>
          </li>
 
-         <li class="nav-item d-flex justify-content-between align-items-center my-2">
-            <?php 
-            if ($nav == "TEMPLATES") {
-               echo '<a class="nav-link text-light obejor-bg-dark w-100 rounded-right" href="templates.php">';
-            } else {
-               echo '<a class="nav-link text-dark" href="templates.php">';
-            }
+         <!-- <li class="nav-item d-flex justify-content-between align-items-center my-2">
+            < ?php 
+            // if ($nav == "TEMPLATES") {
+            //    echo '<a class="nav-link text-light obejor-bg-dark w-100 rounded-right" href="templates.php">';
+            // } else {
+            //    echo '<a class="nav-link text-dark" href="templates.php">';
+            // }
             ?>
                <span class="badge">
                   <span class="fa fa-2x fa-folder"></span>
@@ -290,24 +307,7 @@
                   Templates
                </span>
             </a>
-         </li>
-
-         <li class="nav-item d-flex justify-content-between align-items-center my-2">
-            <?php 
-            if ($nav == "DRAFTS") {
-               echo '<a class="nav-link text-light obejor-bg-dark w-100 rounded-right" href="drafts.php">';
-            } else {
-               echo '<a class="nav-link text-dark" href="drafts.php">';
-            }
-            ?>
-               <span class="badge">
-                  <span class="fa fa-2x fa-archive"></span>
-               </span>
-               <span class="text-lg mt-2 ml-1">
-                  Drafts
-               </span>
-            </a>
-         </li>
+         </li> -->
 
          <li class="nav-item d-flex justify-content-between align-items-center my-2">
             <?php 

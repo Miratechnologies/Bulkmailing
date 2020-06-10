@@ -18,7 +18,7 @@ include 'scripts/log.php';
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <title>Dashboard | BulkMailing</title>
 
-   <!-- Jquery -->
+   <link rel="shortcut icon" href="assets/imgs/favicon.png" type="image/x-icon"><!-- Jquery -->
    <script src="assets/js/jquery.min.js"></script>
    <!-- Popper -->
    <script src="assets/js/popper.min.js"></script>

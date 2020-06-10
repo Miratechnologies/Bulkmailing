@@ -20,9 +20,10 @@
       // add the template to the draft
       $add = $model->addDraft($templateType,$description,$body);
 
-      if ($add == true) {
+      if ($add != false) {
          exit(json_encode([
-            "flag"=>true
+            "flag"=>true,
+            "id"=>$add
          ]));
       } else {
          exit(json_encode([

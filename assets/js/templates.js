@@ -1,9 +1,4 @@
 
-function showAllTemplates() {
-   hidePages();
-   $("#allTemplates").show();
-}
-
 function showEmailTemplates() {
    hidePages();
    $("#emailTemplates").show();
@@ -15,7 +10,6 @@ function showSmsTemplates() {
 }
 
 function hidePages() {
-   $("#allTemplates").hide();
    $("#emailTemplates").hide();
    $("#smsTemplates").hide();
 }

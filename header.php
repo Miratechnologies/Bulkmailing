@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark obejor-bg-dark sticky-top overflow-hidden">
 	
 	<a class="navbar-brand active ml-5 h1 mt-1" href="index.php">
-		<span class="fa fa-envelope-o"></span> 
+	<img src="assets/imgs/favicon.png" alt="Obejor Logo" width="30">
 		Obejor Bulk Mailing & SMS
 	</a>
 

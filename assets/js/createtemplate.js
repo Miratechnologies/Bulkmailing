@@ -209,145 +209,6 @@ function createNewTemplate ()
 function addFooter()
 {
    var contents =
-   // `
-   // <table width="100%" cellspacing="0" cellpadding="0">
-   //    <tbody>
-   //       <tr>
-   //          <td style="background:rgb(241, 237, 237);padding: 15px 0;"></td>
-   //       </tr>
-   //    </tbody>
-   // </table>
-   // <!-- /For Spacing -->
-
-   // <!-- Footer -->
-   // <table width="100%" cellspacing="0" cellpadding="0"
-   //    style="background:rgb(241, 237, 237);">
-   //    <tbody>
-   //       <!-- Social Media Icons -->
-   //       <tr>
-   //          <td align="center" colspan="2" style="margin-top:5em">
-   //                <a href="https://www.facebook.com/Obejorcom-2335973039767186/"
-   //                   style="text-decoration:none" target="_blank">
-   //                   <img src="http://nglohitech.com/framework/images/templatesimages/facebook.png"
-   //                      alt="Facebook Handle" width="30px" height="30px">
-   //                </a>
-   //                <span style="padding-right: 10px;"></span>
-   //                <a href="https://twitter.com/ObejorNigeria"
-   //                   style="text-decoration:none" target="_blank">
-   //                   <img src="http://nglohitech.com/framework/images/templatesimages/twitter.png"
-   //                      alt="Twitter Handle" width="30px" height="30px">
-   //                </a>
-   //                <span style="padding-right: 10px;"></span>
-   //                <a href="https://www.youtube.com/channel/UCwN0kOwuSlkxU9v4E-UEZog?view_as=subscriber"
-   //                   style="text-decoration:none" target="_blank">
-   //                   <img src="http://nglohitech.com/framework/images/templatesimages/youtube.png"
-   //                      alt="Youtube Handle" width="30px" height="30px">
-   //                </a>
-   //                <span style="padding-right: 10px;"></span>
-   //                <a href="https://www.instagram.com/obejoronline_store/"
-   //                   style="text-decoration:none" target="_blank">
-   //                   <img src="http://nglohitech.com/framework/images/templatesimages/instagram.png"
-   //                      alt="Instagram Handle" width="30px" height="30px">
-   //                </a>
-   //                <span style="padding-right: 10px;"></span>
-   //                <a href="https://www.linkedin.com/company/obejorstore"
-   //                   style="text-decoration:none" target="_blank">
-   //                   <img src="http://nglohitech.com/framework/images/templatesimages/linkedin.png"
-   //                      alt="Linkedin Handle" width="30px" height="30px">
-   //                </a>
-   //          </td>
-   //       </tr>
-   //       <!-- For Spacing -->
-   //       <tr>
-   //          <td style="padding: 15px 0;"></td>
-   //       </tr>
-   //       <!-- Footer Links -->
-   //       <tr align='center' style="text-align:center;background-color:white">
-   //          <td colspan="2"
-   //                style="border-top:1px solid orange;border-bottom:1px solid orange">
-   //                <p style="padding:1em 0">
-   //                   <a href="https://www.obejor.com.ng/about-us"
-   //                      style="padding:0 20px" target="_blank">About Us</a>
-   //                   <a href="https://obejorblog.com/" style="padding:0 20px"
-   //                      target="_blank">Blog</a>
-   //                   <a href="https://www.obejor.com.ng/ocmultivendor/sellerlogin"
-   //                      style="padding:0 20px" target="_blank">Seller
-   //                      Login</a>
-   //                   <a href="https://www.obejor.com.ng/returns-policy"
-   //                      style="padding:0 20px" target="_blank">Return
-   //                      Policy</a>
-   //                   <a href="https://www.obejor.com.ng/terms-condition"
-   //                      style="padding:0 20px" target="_blank">Terms and
-   //                      Condition</a>
-   //                </p>
-   //          </td>
-   //       </tr>
-   //       <!-- For Spacing -->
-   //       <tr>
-   //          <td style="padding: 20px 0;"></td>
-   //       </tr>
-   //       <!-- Address | Contact -->
-   //       <tr>
-   //          <td align="center">
-   //                <p>16 Adepele Street, Computer Village, Ikeja, Lagos State, Nigeria
-   //                </p>
-   //                <p> Email: <a href="mailto:sales@obejor.com"> sales@obejor.com,</a>
-   //                   <a href="mailto:help@obejor.com">
-   //                      help@obejor.com.</a></p>
-   //          </td>
-
-   //          <!-- Contact Us -->
-   //          <td align="center">
-   //                <p>
-   //                   Phone No:<a href='tel:+234-70-40002622'> +2347040002622</a>, <a
-   //                      href='tel:+234-70-40002422 '>
-   //                      +2347040002422</a> </p>
-   //                <p>
-   //                   Whatsapp: <a
-   //                      href="https://api.whatsapp.com/send?phone=+2347040002622">
-   //                      07040002622</a>.</p>
-   //          </td>
-   //       </tr>
-   //       <!-- For Spacing -->
-   //       <tr>
-   //          <td colspan="2" style="padding: 30px 0;"></td>
-   //       </tr>
-
-   //       <!-- unsubscribe -->
-   //       <tr>
-   //          <td colspan="2" align="center" style="color:rgb(88,58,3)">
-   //                <p><small> Want to stop receiving these type of email? You can <a
-   //                            href="https://obejorgroup.com.ng/api/unsubscribe.php?email=[[EMAIL]]">
-   //                            unsubscribe</a> from this list.</small></p>
-   //          </td>
-   //       </tr>
-
-   //       <!-- For Spacing -->
-   //       <tr>
-   //          <td colspan="2" style="padding: 15px 0;"></td>
-   //       </tr>
-   //       <!-- play_store and apple_store icons -->
-   //       <tr>
-   //          <td align="center" colspan="2">
-   //                <a
-   //                   href="https://play.google.com/store/apps/details?id=com.obejor.app">
-   //                   <img src="http://nglohitech.com/framework/images/templatesimages/googlePlay.png"
-   //                      alt="">
-   //                </a>       
-   //                <a href="">
-   //                   <img src="http://nglohitech.com/framework/images/templatesimages/appleStore.png"
-   //                      alt="">
-   //                </a>
-   //          </td>
-   //       </tr>
-   //       <!-- For Spacing -->
-   //       <tr>
-   //          <td colspan="2" style="padding: 15px 0;"></td>
-   //       </tr>
-   //    </tbody>
-   // </table>
-   // `;
-
    `
    <div>
          <table width="100%" cellspacing="0" cellpadding="0"
@@ -809,7 +670,6 @@ function addRowAbove()
    setState();
 }
 
-
 function addRowBelow() 
 {
    // How?
@@ -856,7 +716,6 @@ function addRowBelow()
    $("#btnShowRow").show();
    setState();
 }
-
 
 function addRow ()
 {

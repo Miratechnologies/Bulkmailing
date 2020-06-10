@@ -206,7 +206,8 @@ class DBModel extends DBConnection{
         $res->bind_param("sss",$type,$description,$body);
         $res = $res->execute();
         if ($res) {
-            return true;
+            $lastId = $this->conn->insert_id;
+            return $lastId;
         } else {
             return false;
         }
@@ -260,12 +261,15 @@ class DBModel extends DBConnection{
         }
     }
 
-    public function updateDraft($description, $body, $draftId) {
-        $sql = "UPDATE draft_tbl SET description = ?, body = ? WHERE draft_id = $draftId";
+    public function updateDraft($body, $draftId) {
+        $sql = "UPDATE draft_tbl SET body = ? WHERE draft_id = $draftId";
         $res = $this->conn->prepare($sql);
-        $res->bind_param("ss",$description,$body);
+        $res->bind_param("s",$body);
         $res = $res->execute();
-        if ($res === true) {
+        // die('Good');
+        // error_log($res . "\n",3,'error.log');
+        // die(json_encode($res));
+        if ($res == true) {
             return true;
         } else {
             return false;
