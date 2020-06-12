@@ -321,8 +321,8 @@ let designer =  {
       switch (type) {
          case 'Text':
             body  = `
-            <div class="_txt">
-               <p style="font-size:14px;line-height:1.5;word-break:break-word;font-family:Arial,Helvetica Neue,Helvetica,sans-serif;margin:0;font-weight:400;color:#000000;">
+            <div class="_txt" style="word-break:break-word;">
+               <p style="font-size:14px;line-height:1.5;font-family:Arial,Helvetica Neue,Helvetica,sans-serif;margin:0;font-weight:400;color:#000000;">
                   Text
                </p>
             </div>

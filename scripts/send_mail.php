@@ -43,55 +43,56 @@ if (isset($_GET['action']) && $_GET['action'] == "send") {
 			$recipientEmail = [];
 
 			$output = ''; $noMailSent = 0;
-			foreach($recipients as $recipient)
-			{
-				$mail = new PHPMailer;
-				$mail->IsSMTP();								//Sets Mailer to send message using SMTP
-				$mail->Host = 'mail.obejorgroup.com.ng';		//Sets the SMTP hosts of your Email hosting, this for Godaddy
-				$mail->Port = '25';								//Sets the default SMTP server port
-				$mail->SMTPAuth = true;							//Sets SMTP authentication. Utilizes the Username and Password variables
-				$mail->Username = 'obejor@obejorgroup.com.ng';					//Sets SMTP username
-				$mail->Password = 'z2ByQAHn]LY$';					//Sets SMTP password
-				// Testing REad Receipt
-				$return = "ebukaodini@gmail.com";
-				$mail->AddCustomHeader( "X-Confirm-Reading-To: $return" );
-				$mail->AddCustomHeader( "Return-Receipt-To: $return" );
-				$mail->AddCustomHeader( "Disposition-Notification-To: $return" );
-				// $mail->SMTPSecure = '';							//Sets connection prefix. Options are "", "ssl" or "tls"
-				$mail->From = 'obejor@obejorgroup.com.ng';			//Sets the From email address for the message
-				$mail->FromName = $sender;					//Sets the From name of the message
-				$mail->AddAddress($recipient["email"], $recipient["name"]);	//Adds a "To" address
-				$mail->WordWrap = 50;							//Sets word wrapping on the body of the message to a given number of characters
-				$mail->IsHTML(true);							//Sets message type to HTML
-				$mail->Subject = $subject; //Sets the Subject of the message
-				//An HTML or plain text message body
-				
-				// replacing the placeholders in the body
-				// name - [[NAME]]
-				$newBody = str_replace("[[NAME]]", $recipient["name"], $body);
-				// email - [[EMAIL]]
-				$newBody = str_replace("[[EMAIL]]", $recipient["email"], $newBody);
-				// telephone - [[TELEPHONE]]
-				// $body = str_replace("[[TELEPHONE]]", $recipient["telephone"], $body);
-
-				$mail->Body = $newBody;
-
-				$mail->AltBody = '';
-
-				$result = $mail->Send();						//Send an Email. Return true on success or false on error
-
-				// if error in sending mail
-				if ($result["code"] == '400')
-				{
-					$output .= html_entity_decode($result['full_error']);
-				} else {
-					// increment the no of successful mail sent
-					$noMailSent++;
-				}
+			$mail = new PHPMailer;
+			$mail->IsSMTP();								//Sets Mailer to send message using SMTP
+			$mail->Host = 'mail.obejorgroup.com.ng';		//Sets the SMTP hosts of your Email hosting, this for Godaddy
+			$mail->Port = '587';				//Sets the default SMTP server port
+			$mail->SMTPAuth = true;							//Sets SMTP authentication. Utilizes the Username and Password variables
+			$mail->Username = 'obejor@obejorgroup.com.ng';					//Sets SMTP username
+			$mail->Password = 'z2ByQAHnJLY$';					//Sets SMTP password
+			// Testing REad Receipt
+			// $return = "ebukaodini@gmail.com";
+			// $mail->AddCustomHeader( "X-Confirm-Reading-To: $return" );
+			// $mail->AddCustomHeader( "Return-Receipt-To: $return" );
+			// $mail->AddCustomHeader( "Disposition-Notification-To: $return" );
+			$mail->SMTPSecure = 'ssl';							//Sets connection prefix. Options are "", "ssl" or "tls"
+			$mail->From = 'obejor@obejorgroup.com.ng';			//Sets the From email address for the message
+			$mail->FromName = $sender;					//Sets the From name of the message
+			$mail->AddAddress("obejor@obejorgroup.com.ng", "Obejor Group");	//Adds a "To" address
+			foreach($recipients as $recipient) {
+				$mail->addBCC($recipient["email"], $recipient["name"]);
 
 				// appending the emails with comma
 				$recipientEmail[] = $recipient["email"];
+
+				$noMailSent++;
 			}
+			$mail->addReplyTo('bulkmailer@obejorgroup.com.ng', 'Obejor Group');
+			$mail->WordWrap = 50;							//Sets word wrapping on the body of the message to a given number of characters
+			$mail->IsHTML(true);							//Sets message type to HTML
+			$mail->Subject = $subject; //Sets the Subject of the message
+			//An HTML or plain text message body
+			
+			// replacing the placeholders in the body
+			// name - [[NAME]]
+			// $newBody = str_replace("[[NAME]]", $recipient["name"], $body);
+			// email - [[EMAIL]]
+			// $newBody = str_replace("[[EMAIL]]", $recipient["email"], $newBody);
+			// telephone - [[TELEPHONE]]
+			// $body = str_replace("[[TELEPHONE]]", $recipient["telephone"], $body);
+
+			$mail->Body = $body;
+
+			$mail->AltBody = '';
+
+			$result = $mail->Send();						//Send an Email. Return true on success or false on error
+
+			// if error in sending mail
+			if ($result["code"] == '400')
+			{
+				$output .= html_entity_decode($result['full_error']);
+			}
+
 
 			// add the mail to the mail_report_tbl
 			$noRecipients = count($recipientEmail);
