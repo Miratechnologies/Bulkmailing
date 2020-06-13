@@ -29,7 +29,7 @@ let designer =  {
       <!-- Mail Body -->
       <div class="bulkmailer">
          <div style="margin:0;padding:0;background-color:#e6e7e8">
-            <table style="table-layout:fixed;vertical-align:top;min-width:320px;Margin:0 auto border-spacing:0; border-collapse:collapse;background-color:#e6e7e8;width:100%" cellpadding="0" cellspacing="0" role="presentation" width="100%" bgcolor="#E6E7E8" valign="top">
+            <table style="table-layout:fixed;vertical-align:top;min-width:320px;Margin:0 auto;border-spacing:0; border-collapse:collapse;background-color:#e6e7e8;width:100%" cellpadding="0" cellspacing="0" role="presentation" width="100%" bgcolor="#E6E7E8" valign="top">
                <tbody>
                   <tr style="vertical-align:top" valign="top">
                      <td style="word-break:break-word;vertical-align:top;" valign="top">
@@ -316,7 +316,7 @@ let designer =  {
       }
    }, 
 
-   _create_content: function(type) {
+   _create_content: function(type, ev) {
       let body = "";
       switch (type) {
          case 'Text':
@@ -331,12 +331,13 @@ let designer =  {
          break;
 
          case 'Image':
+            // console.log(ev);
             var uri = 'assets/imgs/default.png';
             var src = (location.host == 'localhost') ? location.origin+'/bulkmailings/'+uri : location.origin+'/'+uri ;
             body  = `
             <div class="_img">
                <div align="center" style="padding-right:0px;padding-left:0px;padding-top:0px;padding-bottom:0px;">
-                  <img src="${src}" alt="Image" title="Image" style="height:auto;width:100%;max-width:800px;display:block" width="800">
+                  <img src="${src}" alt="Image" title="Image" style="height:auto;width:100%;max-width:800px;display:block" width="">
                </div>
             </div>
             `;
@@ -350,7 +351,7 @@ let designer =  {
             <div class="_imglink">
                <div align="center" style="padding-right:0px;padding-left:0px;padding-top:0px;padding-bottom:0px;">
                   <a style="text-decoration: none; color: inherit;" href="#">
-                     <img src="${src}" alt="Image" title="Image" style="height:auto;width:100%;max-width:800px;display:block" width="800">
+                     <img src="${src}" alt="Image" title="Image" style="height:auto;width:100%;max-width:800px;display:block" width="">
                   </a>
                </div>
             </div>
@@ -361,10 +362,8 @@ let designer =  {
          case 'Button':
             body  = `
             <div class="_button" align="center" style="text-align:center;">
-               <a style="text-decoration: none; color: inherit;" href="#">
-                  <div style="display:inline-block;font-weight:400;color:#ffffff;text-align:center;vertical-align:middle;background-color:#6c757d;border: 1px solid transparent;padding-right:5px;padding-left:5px;padding-top:5px;padding-bottom:5px;font-size: 14px;border-radius:5px;font-family:Arial,Helvetica Neue,Helvetica,sans-serif;">
-                     Button
-                  </div>
+               <a href="#" style="text-decoration: none;display:inline-block;font-weight:400;color:#ffffff;text-align:center;vertical-align:middle;background-color:#6c757d;border: 1px solid transparent;padding-right:5px;padding-left:5px;padding-top:5px;padding-bottom:5px;font-size: 14px;border-radius:5px;font-family:Arial,Helvetica Neue,Helvetica,sans-serif;">
+                  Button
                </a>
             </div>
             `;
@@ -599,7 +598,7 @@ function allowContentDrop(ev) {
 function contentDrop(ev) {
    if (contentDragging == true) {
       ev.preventDefault();
-      body = designer._create_content(draggedContent);
+      body = designer._create_content(draggedContent, ev);
       ev.currentTarget.outerHTML = body;
       body = $("#"+display.displayed).html();
       content.set(body);
@@ -893,6 +892,10 @@ function showBlockActions(ev) {
                            title = content.children[0].children[0].title;
                            alt = content.children[0].children[0].alt;
                            width = content.children[0].children[0].width;
+                           alert(content.children[0].children[0].style.maxWidth);
+                           alert(content.children[0].children[0].style.minWidth);
+                           alert(content.children[0].children[0].style.width);
+                           alert(width)
                            varr = content.children[0].style.paddingLeft.toString();
                            paddingleft = varr.substring(0,varr.length - 2);
                            varr = content.children[0].style.paddingRight.toString();
@@ -1073,22 +1076,22 @@ function showBlockActions(ev) {
                            // button attributes
                            alignment = content.align;
                            href = content.children[0].href;
-                           color = rgbToHex(content.children[0].children[0].style.color);
-                           bgcolor = rgbToHex(content.children[0].children[0].style.backgroundColor);
-                           varr = content.children[0].children[0].style.paddingLeft.toString();
+                           color = rgbToHex(content.children[0].style.color);
+                           bgcolor = rgbToHex(content.children[0].style.backgroundColor);
+                           varr = content.children[0].style.paddingLeft.toString();
                            paddingleft = varr.substring(0,varr.length - 2);
-                           varr = content.children[0].children[0].style.paddingRight.toString();
+                           varr = content.children[0].style.paddingRight.toString();
                            paddingright = varr.substring(0,varr.length - 2);
-                           varr = content.children[0].children[0].style.paddingTop.toString();
+                           varr = content.children[0].style.paddingTop.toString();
                            paddingtop = varr.substring(0,varr.length - 2);
-                           varr = content.children[0].children[0].style.paddingBottom.toString();
+                           varr = content.children[0].style.paddingBottom.toString();
                            paddingbottom = varr.substring(0,varr.length - 2);
-                           varr = content.children[0].children[0].style.fontSize.toString();
+                           varr = content.children[0].style.fontSize.toString();
                            fontsize = varr.substring(0,varr.length - 2);
-                           varr = content.children[0].children[0].style.borderRadius.toString();
+                           varr = content.children[0].style.borderRadius.toString();
                            borderradius = varr.substring(0,varr.length - 2);
-                           fontfamily =  content.children[0].children[0].style.fontFamily;
-                           btntext = content.children[0].children[0].innerText;
+                           fontfamily =  content.children[0].style.fontFamily;
+                           btntext = content.children[0].innerText;
 
                            columnContents += `
                            <div class="border rounded pl-3 pr-1 my-1 w-100 text-secondary">
@@ -1715,42 +1718,42 @@ function editButton(type, value, col, cnt) {
 
    switch (type) {
       case 'bg':
-         cntt.children[0].children[0].style.backgroundColor = rgbToHex(value);
+         cntt.children[0].style.backgroundColor = rgbToHex(value);
       break;
       case 'color':
-         cntt.children[0].children[0].style.color = rgbToHex(value);
+         cntt.children[0].style.color = rgbToHex(value);
       break;
       case 'link':
          cntt.children[0].href = value;
       break;
       case 'text':
-         cntt.children[0].children[0].innerText = value;
+         cntt.children[0].innerText = value;
       break;
       case 'align':
          cntt.align = value;
          cntt.style.textAlign = value;
       break;
       case 'pl':
-         cntt.children[0].children[0].style.paddingLeft = value + 'px';
+         cntt.children[0].style.paddingLeft = value + 'px';
       break;
       case 'pr':
-         cntt.children[0].children[0].style.paddingRight = value + 'px';
+         cntt.children[0].style.paddingRight = value + 'px';
       break;
       case 'pt':
-         cntt.children[0].children[0].style.paddingTop = value + 'px';
+         cntt.children[0].style.paddingTop = value + 'px';
       break;
       case 'pb':
-         cntt.children[0].children[0].style.paddingBottom = value + 'px';
+         cntt.children[0].style.paddingBottom = value + 'px';
       break;
       case 'family':
-         cntt.children[0].children[0].style.fontFamily = value;
+         cntt.children[0].style.fontFamily = value;
       break;
       case 'size':
          alert(value)
-         cntt.children[0].children[0].style.fontSize = value+'px';
+         cntt.children[0].style.fontSize = value+'px';
       break;
       case 'radius':
-         cntt.children[0].children[0].style.borderRadius = value+'px';
+         cntt.children[0].style.borderRadius = value+'px';
       break;
    
       default:
@@ -1868,7 +1871,8 @@ function componentToHex(c) {
 // Create Campaign
 
 function save(campaignId) {
-   let campaign_name = $("#campaign-name-display").html();
+   // let campaign_name = $("#campaign-name-display").html();
+   console.log(content.content);
    if (campaignId != null && campaignId > 0) {
       $.post('scripts/update_draft.php', 
       {
