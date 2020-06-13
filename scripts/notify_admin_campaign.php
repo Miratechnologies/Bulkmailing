@@ -19,6 +19,8 @@ if(isset($_POST['send_email']))
    $recipientEmails = json_encode($recipients);
    
 	$mail = new PHPMailer;
+	$mail->CharSet = "UTF-8";
+	$mail->Encoding = "base64";
 	$mail->IsSMTP();
 	$mail->Host = 'mail.obejorgroup.com.ng';
 	$mail->Port = 465;
