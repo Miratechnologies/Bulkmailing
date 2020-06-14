@@ -199,7 +199,7 @@ let designer =  {
             for (let count = 0; count < no; count++) {
                body += `
                <!-- Column -->
-               <div class="_col" style="display:table-cell;vertical-align:middle;max-width:${800/no}px;min-width:${320/no}px;width:${800/no}px">
+               <div class="_col" style="display:table-cell;vertical-align:middle;max-width:${300}px;min-width:${320/no}px;width:${300}px">
                   <div style="width:100%!important;border-top:0px solid transparent;border-left:0px solid transparent;border-bottom:0px solid transparent;border-right:0px solid transparent;padding-top:0px;padding-bottom:0px;padding-right:0px;padding-left:0px;background-color:#ffffff">
                   
                      <!-- Content -->
@@ -1909,11 +1909,26 @@ function componentToHex(c) {
 // Create Campaign
 
 function save() {
+   let body = content.content;
+   body = body.toString();
+   body = body.replace("class=\"bulkmailer\"", "");
+   body = body.replace("class=\"_txt\"", "");
+   body = body.replace("class=\"_imglink\"", "");
+   body = body.replace("class=\"_img\"", "");
+   body = body.replace("class=\"default _add_block _row\"", "");
+   body = body.replace("class=\"_txtblock\"", "");
+   body = body.replace("class=\"_content\"", "");
+   body = body.replace("class=\"_button\"", "");
+   body = body.replace("class=\"_divider\"", "");
+   body = body.replace("class=\"_spacer\"", "");
+   body = body.replace("class=\"_table\"", "");
+   body = body.replace("class=\"_add_content\"", "");
+   console.log(body);
    if (campaignId != null && campaignId > 0) {
       $.post('scripts/update_draft.php', 
       {
          id: campaignId,
-         body: content.content
+         body: body
       }, function(data, status) {
          if (status == 'success') {
             // alert(data);

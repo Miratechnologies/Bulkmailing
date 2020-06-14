@@ -68,6 +68,19 @@ if (isset($_GET['action']) && $_GET['action'] == "send") {
 			$mail->WordWrap = 50;
 			$mail->IsHTML(true);
 			$mail->Subject = $subject;
+			// clean the body codes
+			$body = str_replace("class=\"bulkmailer\"", "", $body);
+			$body = str_replace("class=\"_txt\"", "", $body);
+			$body = str_replace("class=\"_imglink\"", "", $body);
+			$body = str_replace("class=\"_img\"", "", $body);
+			$body = str_replace("class=\"default _add_block _row\"", "", $body);
+			$body = str_replace("class=\"_txtblock\"", "", $body);
+			$body = str_replace("class=\"_content\"", "", $body);
+			$body = str_replace("class=\"_button\"", "", $body);
+			$body = str_replace("class=\"_divider\"", "", $body);
+			$body = str_replace("class=\"_spacer\"", "", $body);
+			$body = str_replace("class=\"_table\"", "", $body);
+			$body = str_replace("class=\"_add_content\"", "", $body);
 			$mail->Body = $body;
 			$result = $mail->Send();
 

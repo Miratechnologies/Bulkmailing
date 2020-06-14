@@ -35,6 +35,19 @@ if(isset($_POST['send_email']))
 	$mail->WordWrap = 50;
 	$mail->IsHTML(true);
 	$mail->Subject = $subject;
+	// clean the body codes
+	$body = str_replace("class=\"bulkmailer\"", "", $body);
+	$body = str_replace("class=\"_txt\"", "", $body);
+	$body = str_replace("class=\"_imglink\"", "", $body);
+	$body = str_replace("class=\"_img\"", "", $body);
+	$body = str_replace("class=\"default _add_block _row\"", "", $body);
+	$body = str_replace("class=\"_txtblock\"", "", $body);
+	$body = str_replace("class=\"_content\"", "", $body);
+	$body = str_replace("class=\"_button\"", "", $body);
+	$body = str_replace("class=\"_divider\"", "", $body);
+	$body = str_replace("class=\"_spacer\"", "", $body);
+	$body = str_replace("class=\"_table\"", "", $body);
+	$body = str_replace("class=\"_add_content\"", "", $body);
 	$mail->Body = $body . $attachment;
 	$mail->AltBody = "<br>A new campaign with the subject <b>{$subject}</b> is about to go out.\r\nPlease Authourize this campaign.";
 	$result = $mail->Send();
