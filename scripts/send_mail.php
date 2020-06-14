@@ -45,7 +45,7 @@ if (isset($_GET['action']) && $_GET['action'] == "send") {
 			$output = ''; $noMailSent = 0;
 			$mail = new PHPMailer;
 			$mail->CharSet = "UTF-8";
-			$mail->Encoding = "utf-8";
+			$mail->Encoding = "base64";
 			$mail->IsSMTP();
 			$mail->Host = 'mail.obejorgroup.com.ng';
 			$mail->Port = 465;
