@@ -109,7 +109,7 @@ class scheduler
 		
 		$mail = new PHPMailer;
 		$mail->CharSet = "UTF-8";
-		$mail->Encoding = "base64";
+		$mail->Encoding = "utf-8";
 		$mail->IsSMTP();
 		$mail->Host = 'mail.obejorgroup.com.ng';
 		$mail->Port = 465;
