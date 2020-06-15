@@ -157,6 +157,11 @@ if ($get['flag'] == true) {
                   <button class="btn btn-md border text-secondary w-100" data-type="Spacer" draggable="true" ondragstart="contentDrag(event)"> <span class="fa fa-plus"></span><br>Spacer</button>
                </div>
             </div>
+            <div class="row my-2 no-gutters text-center w-100">
+               <div class="col-11 mx-auto h-auto">
+                  <button class="btn btn-md border text-secondary w-100" data-type="SocialIcons" draggable="true" ondragstart="contentDrag(event)"> <span class="fa fa-plus"></span><br>Social Media Links</button>
+               </div>
+            </div>
          </div>
 
          <!-- Editor -->

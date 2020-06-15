@@ -331,7 +331,6 @@ let designer =  {
          break;
 
          case 'Image':
-            // console.log(ev)
             var uri = 'assets/imgs/default.png';
             var src = (location.host == 'localhost') ? location.origin+'/bulkmailings/'+uri : location.origin+'/'+uri ;
             body  = `
@@ -344,13 +343,49 @@ let designer =  {
             return body;
          break;
 
+         case 'SocialIcons':
+            // console.log(ev);
+            var uri = 'assets/imgs/sm_facebook.png';
+            var fbsrc = (location.host == 'localhost') ? location.origin+'/bulkmailings/'+uri : location.origin+'/'+uri ;
+            uri = 'assets/imgs/sm_linkedin.png';
+            var ldsrc = (location.host == 'localhost') ? location.origin+'/bulkmailings/'+uri : location.origin+'/'+uri ;
+            uri = 'assets/imgs/sm_instagram.png';
+            var igsrc = (location.host == 'localhost') ? location.origin+'/bulkmailings/'+uri : location.origin+'/'+uri ;
+            uri = 'assets/imgs/sm_twitter.png';
+            var twsrc = (location.host == 'localhost') ? location.origin+'/bulkmailings/'+uri : location.origin+'/'+uri ;
+            uri = 'assets/imgs/sm_youtube.png';
+            var ytsrc = (location.host == 'localhost') ? location.origin+'/bulkmailings/'+uri : location.origin+'/'+uri ;
+            body  = `
+            <div class="_socialicons">
+               <div align="center" style="padding-right:5px;padding-left:5px;padding-top:10px;padding-bottom:10px;">
+                  <a style="text-decoration: none; color: inherit;" target="_blank" href="https://facebook.com">
+                     <img src="${fbsrc}" alt="Facebook" title="Facebook" width="30">
+                  </a>
+                  <a style="text-decoration: none; color: inherit;" target="_blank" href="https://instagram.com">
+                     <img src="${igsrc}" alt="Instagram" title="Instagram" width="30">
+                  </a>
+                  <a style="text-decoration: none; color: inherit;" target="_blank" href="https://linkedin.com">
+                     <img src="${ldsrc}" alt="LinkedIn" title="LinkedIn" width="30">
+                  </a>
+                  <a style="text-decoration: none; color: inherit;" target="_blank" href="https://twitter.com">
+                     <img src="${twsrc}" alt="Twitter" title="Twitter" width="30">
+                  </a>
+                  <a style="text-decoration: none; color: inherit;" target="_blank" href="https://youtube.com">
+                     <img src="${ytsrc}" alt="Youtube" title="Youtube" width="30">
+                  </a>
+               </div>
+            </div>
+            `;
+            return body;
+         break;
+
          case 'LinkImage':
             var uri = 'assets/imgs/default.png';
             var src = (location.host == 'localhost') ? location.origin+'/bulkmailings/'+uri : location.origin+'/'+uri ;
             body  = `
             <div class="_imglink">
                <div align="center" style="padding-right:0px;padding-left:0px;padding-top:0px;padding-bottom:0px;">
-                  <a style="text-decoration: none; color: inherit;" href="#">
+               <a style="text-decoration: none; color: inherit;" target="_blank" href="#">
                      <img src="${src}" alt="Image" title="Image" style="height:auto;width:100%;max-width:800px;display:block" width="">
                   </a>
                </div>
@@ -362,7 +397,7 @@ let designer =  {
          case 'Button':
             body  = `
             <div class="_button" align="center" style="text-align:center;">
-               <a href="#" style="text-decoration: none;display:inline-block;font-weight:400;color:#ffffff;text-align:center;vertical-align:middle;background-color:#6c757d;border: 1px solid transparent;padding-right:5px;padding-left:5px;padding-top:5px;padding-bottom:5px;font-size: 14px;border-radius:5px;font-family:Arial,Helvetica Neue,Helvetica,sans-serif;">
+            <a target="_blank" href="#" style="text-decoration: none;display:inline-block;font-weight:400;color:#ffffff;text-align:center;vertical-align:middle;background-color:#6c757d;border: 1px solid transparent;padding-right:5px;padding-left:5px;padding-top:5px;padding-bottom:5px;font-size: 14px;border-radius:5px;font-family:Arial,Helvetica Neue,Helvetica,sans-serif;">
                   Button
                </a>
             </div>
@@ -866,15 +901,15 @@ function showBlockActions(ev) {
                                     codeviewFilter: false,
                                     codeviewIframeFilter: true,
                                     tabsize: 3,
-                                    height: 120,
+                                    height: 200,
                                     toolbar: [
                                        ['style', ['style','h1']],
                                        ['fontstyle', ['bold', 'underline', 'italic', 'strikethrough']],
                                        ['textstyle', ['superscript', 'subscript', 'color', 'clear']],
-                                       ['font', ['fontname', 'fontsize','height']],
+                                       ['font', ['fontname','fontsize','height']],
                                        ['para', ['ul', 'ol', 'paragraph']],
-                                       ['inserts', ['link','table','picture','video','hr']],
-                                       ['optview', ['codeview','undo','redo','help']]
+                                       ['inserts', ['link', 'table', 'hr']],
+                                       ['optview', ['undo', 'redo', 'help']]
                                     ]
                                  });
                               </script>
@@ -967,6 +1002,98 @@ function showBlockActions(ev) {
                                  </span>
                                  <input type="number" id="content-${count+1}-${ccount+1}-padding-bottom" class="input-group-append form-control" placeholder="Width" value="${paddingbottom}" onchange="editImage('pb',$('#content-${count+1}-${ccount+1}-padding-bottom').val(),${count},${ccount})">
                               </div>
+                              </div>
+                              `;
+                           break;
+   
+                           case '_socialicons':
+                              alignment = content.children[0].align;
+                              width = content.children[0].children[0].children[0].width;
+                              varr = content.children[0].style.paddingLeft.toString();
+                              paddingleft = varr.substring(0,varr.length - 2);
+                              varr = content.children[0].style.paddingRight.toString();
+                              paddingright = varr.substring(0,varr.length - 2);
+                              varr = content.children[0].style.paddingTop.toString();
+                              paddingtop = varr.substring(0,varr.length - 2);
+                              varr = content.children[0].style.paddingBottom.toString();
+                              paddingbottom = varr.substring(0,varr.length - 2);
+   
+                              // the links
+                              var children = content.children[0].children;
+                              var counter = 0; links = "";
+                              for (const key in children) {
+                                 if (children.hasOwnProperty(key)) {
+                                    const child = children[key];
+   
+                                    var href = child.href;
+                                    var title = child.children[0].title;
+                                    
+                                    body = `
+                                    <div id="socialicon-${count+1}-${ccount+1}-${counter}" class="input-group my-1">
+                                       <div class="input-group-prepend">
+                                          <span title="Link" class="input-group-text color-muted">
+                                             ${title}
+                                          </span>
+                                       </div>
+                                       <input type="text" id="content-${count+1}-${ccount+1}-${counter}" class="input-group-append form-control" placeholder="Link" value="${href}" onchange="editSocials('link',$('#content-${count+1}-${ccount+1}-${counter}').val(),${count}, ${ccount},${counter})">
+                                       <button title="Remove ${title}" class="btn border btn-sm input-group-append text-secondary" onclick="editSocials('remove','',${count}, ${ccount},${counter});$('#socialicon-${count+1}-${ccount+1}-${counter}').hide()"><span class="fa my-auto fa-times"></span></button>
+                                    </div>
+                                    `;
+   
+                                    links += body;
+   
+                                    counter++;
+                                 }
+                              }
+   
+                              columnContents += `
+                              <div class="border rounded pl-3 pr-1 my-1 w-100 text-secondary">
+                                 <span class="my-2 float-left">Social Media Links</span>
+   
+                                 ${contentAction}
+                                 <div class="clearfix"></div>
+                                 <hr class="mt-1">
+   
+                                 ${links}
+                                 
+                                 <div class="input-group my-1">
+                                    <div class="input-group-prepend">
+                                       <span title="Width" class="input-group-text color-muted">
+                                          Width
+                                       </span>
+                                    </div>
+                                    <input type="number" id="content-${count+1}-${ccount+1}-width" class="input-group-append form-control" min="10" max="50" placeholder="Width" value="${width}" onchange="editSocials('width',$('#content-${count+1}-${ccount+1}-width').val(),${count},${ccount})">
+                                    
+                                    <span title="Alignment" class="input-group-append input-group-text rounded-0 bg-muted">
+                                       Alignment
+                                    </span>
+                                    <select id="content-${count+1}-${ccount+1}-align" class="input-group-append form-control" value="${alignment}" onchange="editSocials('align',$('#content-${count+1}-${ccount+1}-align').val(),${count},${ccount})" placeholder="Alignment">
+                                       <option value="center">Center</option>
+                                       <option value="left">Left</option>
+                                       <option value="right">Right</option>
+                                    </select>
+                                 </div>
+   
+                                 <div class="input-group my-1">
+                                    <div class="input-group-prepend">
+                                       <span title="Padding Left" class="input-group-text bg-muted">
+                                          PL
+                                       </span>
+                                    </div>
+                                    <input type="number" id="content-${count+1}-${ccount+1}-padding-left" class="input-group-append form-control" placeholder="Width" value="${paddingleft}" onchange="editSocials('pl',$('#content-${count+1}-${ccount+1}-padding-left').val(),${count},${ccount})">
+                                    <span title="Padding Right" class="input-group-append input-group-text rounded-0 bg-muted">
+                                       PR
+                                    </span>
+                                    <input type="number" id="content-${count+1}-${ccount+1}-padding-right" class="input-group-append form-control" placeholder="Width" value="${paddingright}" onchange="editSocials('pr',$('#content-${count+1}-${ccount+1}-padding-right').val(),${count},${ccount})">
+                                    <span title="Padding Top" class="input-group-append input-group-text rounded-0 bg-muted">
+                                       PT
+                                    </span>
+                                    <input type="number" id="content-${count+1}-${ccount+1}-padding-top" class="input-group-append form-control" placeholder="Width" value="${paddingtop}" onchange="editSocials('pt',$('#content-${count+1}-${ccount+1}-padding-top').val(),${count},${ccount})">
+                                    <span title="Padding Bottom" class="input-group-append input-group-text rounded-0 bg-muted">
+                                       PB
+                                    </span>
+                                    <input type="number" id="content-${count+1}-${ccount+1}-padding-bottom" class="input-group-append form-control" placeholder="Width" value="${paddingbottom}" onchange="editSocials('pb',$('#content-${count+1}-${ccount+1}-padding-bottom').val(),${count},${ccount})">
+                                 </div>   
 
                            </div>
                            `;
@@ -1066,6 +1193,7 @@ function showBlockActions(ev) {
 
                            </div>
                            `;
+
                         break;
 
                         case '_button':
@@ -1597,9 +1725,7 @@ function editImage(type, value, col, cnt) {
 
    switch (type) {
       case 'align':
-         // alert(value)
          cntt.children[0].align = value;
-         // cntt.children[0].style.textAlign = value;
       break;
       case 'pl':
          cntt.children[0].style.paddingLeft = value + 'px';
@@ -1622,6 +1748,51 @@ function editImage(type, value, col, cnt) {
       break;
       case 'title':
          cntt.children[0].children[0].title = value;
+      break;
+   
+      default:
+      break;
+   }
+
+   body = $("#"+display.displayed).html();
+   content.set(body);
+}
+
+function editSocials(type, value, col, cnt, item = 0) {
+   let column = selectedBlock.currentTarget.children[0].children[0].children[col];
+   let cntt = column.children[0].children[cnt];
+
+   switch (type) {
+      case 'align':
+         cntt.children[0].align = value;
+      break;
+      case 'pl':
+         cntt.children[0].style.paddingLeft = value + 'px';
+      break;
+      case 'pr':
+         cntt.children[0].style.paddingRight = value + 'px';
+      break;
+      case 'pt':
+         cntt.children[0].style.paddingTop = value + 'px';
+      break;
+      case 'pb':
+         cntt.children[0].style.paddingBottom = value + 'px';
+      break;
+      case 'width':
+         var children = cntt.children[0].children;
+         var counter = 0;
+         for (const key in children) {
+            if (children.hasOwnProperty(key)) {
+               cntt.children[0].children[counter].children[0].width = value;
+               counter++;
+            }
+         }
+      break;
+      case 'link':
+         cntt.children[0].children[item].href = value;
+      break;
+      case 'remove':
+         cntt.children[0].children[item].outerHTML = "";
       break;
    
       default:
@@ -1931,7 +2102,6 @@ function save() {
          body: body
       }, function(data, status) {
          if (status == 'success') {
-            // alert(data);
             resp = JSON.parse(data);
             if (resp.flag == true) {
                alert(`campaign updated successfully`);

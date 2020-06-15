@@ -11,6 +11,7 @@
 
 .scrollable {
    overflow-y: auto !important;
+   /* display: ; */
 }
 
 .scrollable-x {

@@ -119,7 +119,7 @@ class scheduler
 		$mail->Password = 'z2ByQAHnJLY$';
 		$mail->From = 'obejor@obejorgroup.com.ng';
 		$mail->FromName = $sender;
-		$mail->AddAddress("obejor@obejorgroup.com.ng", "Obejor Group");
+		// $mail->AddAddress("obejor@obejorgroup.com.ng", "Obejor Group");
 		foreach($recipients as $recipient) {
 			$mail->addBCC($recipient["email"], $recipient["name"]);
 
