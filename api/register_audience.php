@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
+
 $inputs = $_POST;
 
 // Get Inputs
@@ -34,11 +36,11 @@ if ($validation->validateEmail($email,10,50) == false) {
    $email = $validation->sanitize($email);
 }
 
-if ($validation->validateTelephone($telephone,10,20) == false) {
-   $request == "Application" ? exit(header("location: ../audience.php?errmsg=Invalid Telephone.")) : die(json_encode(["flag"=>false,"msg"=>"Invalid Telephone."]));
-} else {
+// if ($validation->validateTelephone($telephone,10,20) == false) {
+//    $request == "Application" ? exit(header("location: ../audience.php?errmsg=Invalid Telephone.")) : die(json_encode(["flag"=>false,"msg"=>"Invalid Telephone."]));
+// } else {
    $telephone = $validation->sanitize($telephone);
-}
+// }
 
 if ($classification != "CUSTOMER" && $classification != "SUBSCRIBER") {
    $request == "Application" ? exit(header("location: ../audience.php?errmsg=Invalid Classification.")) : die(json_encode(["flag"=>false,"msg"=>"Invalid Classification."]));
@@ -50,15 +52,15 @@ if ($classification != "CUSTOMER" && $classification != "SUBSCRIBER") {
 // include SMTP Email Validation Class
 include_once '../vendor/php-smtp-email-validation/trunk/smtp_validateEmail.class.php';
 
-// Verify that email exist
-// an optional sender
-$sender = 'obejor@obejorgroup.com.ng';
-// instantiate the class
-$SMTP_Validator = new SMTP_validateEmail();
-// turn on debugging if you want to view the SMTP transaction
-$SMTP_Validator->debug = false;
-// do the validation
-$results = $SMTP_Validator->validate(array($email), $sender);
+// // Verify that email exist
+// // an optional sender
+// $sender = 'bulkmailer@miratechnologies.com.ng';
+// // instantiate the class
+// $SMTP_Validator = new SMTP_validateEmail();
+// // turn on debugging if you want to view the SMTP transaction
+// $SMTP_Validator->debug = false;
+// // do the validation
+// $results = $SMTP_Validator->validate(array($email), $sender);
 
 
 // check results
@@ -71,7 +73,7 @@ $results = $SMTP_Validator->validate(array($email), $sender);
       $add = $model->addAudience($firstname, $lastname, $email, $telephone, $classification, "SUBSCRIBED");
       // and send confirmation mail
       if ($add == true) {
-         mail($email, 'Thanks', 'Thank you for subscribing to Obejor Newsletter.', 'From:'.$sender."\r\n"); // send email
+         @mail($email, 'Thanks', 'Thank you for subscribing to Mira Technologies Newsletter.', 'From:'.$sender."\r\n"); // send email
          $request == "Application" ? exit(header("location: ../audience.php?succmsg=Customer has successfully subscribed to newsletter.")) : die(json_encode(["flag"=>true,"data"=>"Customer has successfully subscribed to newsletter."]));
       } else {
          $request == "Application" ? exit(header("location: ../audience.php?errmsg=Customer could not subscribe to newsletter.")) : die(json_encode(["flag"=>false,"data"=>"Customer could not subscribe to newsletter."]));
