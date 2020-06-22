@@ -53,10 +53,10 @@ function readExcelData($excelFile){
    foreach ($sheetData as $row) {
 
       $firstname = $row['A'];
-      $lastname = $row['B'];
+      $lastname = $row['B'] ?? '';
       $email = $row['C'];
-      $telephone = $row['D'];
-      $classification = $row['E'];
+      $telephone = $row['D'] ?? '';
+      $classification = $row['E'] ?? '';
 
       // verify that email exist
       
