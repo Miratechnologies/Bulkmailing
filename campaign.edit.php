@@ -41,6 +41,8 @@ if ($_GET != []) {
       header('location: drafts.php');
    }
 
+} else {
+   header("Location: campaign.php");
 }
 
 ?>
@@ -52,7 +54,8 @@ if ($_GET != []) {
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Edit Email Campaign | BulkMailing</title>
 
-   <link rel="shortcut icon" href="assets/imgs/favicon.png" type="image/x-icon"><!-- Jquery -->
+   <link rel="shortcut icon" href="assets/imgs/favicon.png" type="image/x-icon">
+   <!-- Jquery -->
 	<script src="assets/js/jquery.min.js"></script>
 	<!-- Popper -->
 	<script src="assets/js/popper.min.js"></script>
@@ -109,12 +112,12 @@ if ($_GET != []) {
          
          <!-- Mobile -->
          <div id="body-mobile" class="mb-5 position-fixed scrollable bg-white" style="width: 328px;max-width: 328px;min-width: 328px;height: 90%;margin-left: 25%;border: 4px solid rgb(82, 72, 67);border-radius: 20px;overflow: hidden;display: none;">
-            <?= $body ?? '' ?>
+            <?= html_entity_decode($body) ?? '' ?>
          </div>
 
          <!-- PC -->
          <div id="body-pc" class="mb-5 position-fixed scrollable bg-white" style="width:66.6%;height: 90%;display: block;">
-            <?= $body ?? '' ?>
+            <?= html_entity_decode($body) ?? '' ?>
          </div>
 
       </section>

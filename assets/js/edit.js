@@ -1104,7 +1104,7 @@ function showBlockActions(ev) {
                            src = content.children[0].children[0].children[0].src;
                            title = content.children[0].children[0].children[0].title;
                            alt = content.children[0].children[0].children[0].alt;
-                           width = content.children[0].children[0].width;
+                           width = content.children[0].children[0].children[0].width;
                            varr = content.children[0].style.paddingLeft.toString();
                            paddingleft = varr.substring(0,varr.length - 2);
                            varr = content.children[0].style.paddingRight.toString();
@@ -1145,12 +1145,12 @@ function showBlockActions(ev) {
                                        Width
                                     </span>
                                  </div>
-                                 <input type="number" id="content-${count+1}-${ccount+1}-width" class="input-group-append form-control" min="80" max="800" placeholder="Width" value="${width}" onchange="editImage('width',$('#content-${count+1}-${ccount+1}-width').val(),${count},${ccount})">
+                                 <input type="number" id="content-${count+1}-${ccount+1}-width" class="input-group-append form-control" min="80" max="800" placeholder="Width" value="${width}" onchange="editImageLink('width',$('#content-${count+1}-${ccount+1}-width').val(),${count},${ccount})">
                                  
                                  <span title="Alignment" class="input-group-append input-group-text rounded-0 bg-muted">
                                     Alignment
                                  </span>
-                                 <select id="content-${count+1}-${ccount+1}-align" class="input-group-append form-control" value="${alignment}" onchange="editImage('align',$('#content-${count+1}-${ccount+1}-align').val(),${count},${ccount})" placeholder="Alignment">
+                                 <select id="content-${count+1}-${ccount+1}-align" class="input-group-append form-control" value="${alignment}" onchange="editImageLink('align',$('#content-${count+1}-${ccount+1}-align').val(),${count},${ccount})" placeholder="Alignment">
                                     <option value="center">Center</option>
                                     <option value="left">Left</option>
                                     <option value="right">Right</option>
@@ -1163,11 +1163,11 @@ function showBlockActions(ev) {
                                        ALT
                                     </span>
                                  </div>
-                                 <input type="text" id="content-${count+1}-${ccount+1}-alt" class="input-group-append form-control" placeholder="ALT" value="${alt}" onchange="editImage('alt',$('#content-${count+1}-${ccount+1}-alt').val(),${count}, ${ccount})">
+                                 <input type="text" id="content-${count+1}-${ccount+1}-alt" class="input-group-append form-control" placeholder="ALT" value="${alt}" onchange="editImageLink('alt',$('#content-${count+1}-${ccount+1}-alt').val(),${count}, ${ccount})">
                                  <span title="Title" class="input-group-append input-group-text rounded-0 bg-muted">
                                     Title
                                  </span>
-                                 <input type="text" id="content-${count+1}-${ccount+1}-title" class="input-group-append form-control" placeholder="Title" value="${title}" onchange="editImage('title',$('#content-${count+1}-${ccount+1}-title').val(),${count}, ${ccount})">
+                                 <input type="text" id="content-${count+1}-${ccount+1}-title" class="input-group-append form-control" placeholder="Title" value="${title}" onchange="editImageLink('title',$('#content-${count+1}-${ccount+1}-title').val(),${count}, ${ccount})">
                               </div>
 
                               <div class="input-group my-1">
@@ -1176,19 +1176,19 @@ function showBlockActions(ev) {
                                        PL
                                     </span>
                                  </div>
-                                 <input type="number" id="content-${count+1}-${ccount+1}-padding-left" class="input-group-append form-control" placeholder="Width" value="${paddingleft}" onchange="editImage('pl',$('#content-${count+1}-${ccount+1}-padding-left').val(),${count},${ccount})">
+                                 <input type="number" id="content-${count+1}-${ccount+1}-padding-left" class="input-group-append form-control" placeholder="Width" value="${paddingleft}" onchange="editImageLink('pl',$('#content-${count+1}-${ccount+1}-padding-left').val(),${count},${ccount})">
                                  <span title="Padding Right" class="input-group-append input-group-text rounded-0 bg-muted">
                                     PR
                                  </span>
-                                 <input type="number" id="content-${count+1}-${ccount+1}-padding-right" class="input-group-append form-control" placeholder="Width" value="${paddingright}" onchange="editImage('pr',$('#content-${count+1}-${ccount+1}-padding-right').val(),${count},${ccount})">
+                                 <input type="number" id="content-${count+1}-${ccount+1}-padding-right" class="input-group-append form-control" placeholder="Width" value="${paddingright}" onchange="editImageLink('pr',$('#content-${count+1}-${ccount+1}-padding-right').val(),${count},${ccount})">
                                  <span title="Padding Top" class="input-group-append input-group-text rounded-0 bg-muted">
                                     PT
                                  </span>
-                                 <input type="number" id="content-${count+1}-${ccount+1}-padding-top" class="input-group-append form-control" placeholder="Width" value="${paddingtop}" onchange="editImage('pt',$('#content-${count+1}-${ccount+1}-padding-top').val(),${count},${ccount})">
+                                 <input type="number" id="content-${count+1}-${ccount+1}-padding-top" class="input-group-append form-control" placeholder="Width" value="${paddingtop}" onchange="editImageLink('pt',$('#content-${count+1}-${ccount+1}-padding-top').val(),${count},${ccount})">
                                  <span title="Padding Bottom" class="input-group-append input-group-text rounded-0 bg-muted">
                                     PB
                                  </span>
-                                 <input type="number" id="content-${count+1}-${ccount+1}-padding-bottom" class="input-group-append form-control" placeholder="Width" value="${paddingbottom}" onchange="editImage('pb',$('#content-${count+1}-${ccount+1}-padding-bottom').val(),${count},${ccount})">
+                                 <input type="number" id="content-${count+1}-${ccount+1}-padding-bottom" class="input-group-append form-control" placeholder="Width" value="${paddingbottom}" onchange="editImageLink('pb',$('#content-${count+1}-${ccount+1}-padding-bottom').val(),${count},${ccount})">
                               </div>
 
                            </div>
@@ -1719,45 +1719,6 @@ function editText(value, col, cnt) {
    content.set(body);
 }
 
-function editImage(type, value, col, cnt) {
-   let column = selectedBlock.currentTarget.children[0].children[0].children[col];
-   let cntt = column.children[0].children[cnt];
-
-   switch (type) {
-      case 'align':
-         cntt.children[0].align = value;
-      break;
-      case 'pl':
-         cntt.children[0].style.paddingLeft = value + 'px';
-      break;
-      case 'pr':
-         cntt.children[0].style.paddingRight = value + 'px';
-      break;
-      case 'pt':
-         cntt.children[0].style.paddingTop = value + 'px';
-      break;
-      case 'pb':
-         cntt.children[0].style.paddingBottom = value + 'px';
-      break;
-      case 'width':
-         cntt.children[0].children[0].width = value;
-         cntt.children[0].children[0].style.maxWidth = value + 'px';
-      break;
-      case 'alt':
-         cntt.children[0].children[0].alt = value;
-      break;
-      case 'title':
-         cntt.children[0].children[0].title = value;
-      break;
-   
-      default:
-      break;
-   }
-
-   body = $("#"+display.displayed).html();
-   content.set(body);
-}
-
 function editSocials(type, value, col, cnt, item = 0) {
    let column = selectedBlock.currentTarget.children[0].children[0].children[col];
    let cntt = column.children[0].children[cnt];
@@ -1793,6 +1754,45 @@ function editSocials(type, value, col, cnt, item = 0) {
       break;
       case 'remove':
          cntt.children[0].children[item].outerHTML = "";
+      break;
+   
+      default:
+      break;
+   }
+
+   body = $("#"+display.displayed).html();
+   content.set(body);
+}
+
+function editImage(type, value, col, cnt) {
+   let column = selectedBlock.currentTarget.children[0].children[0].children[col];
+   let cntt = column.children[0].children[cnt];
+
+   switch (type) {
+      case 'align':
+         cntt.children[0].align = value;
+      break;
+      case 'pl':
+         cntt.children[0].style.paddingLeft = value + 'px';
+      break;
+      case 'pr':
+         cntt.children[0].style.paddingRight = value + 'px';
+      break;
+      case 'pt':
+         cntt.children[0].style.paddingTop = value + 'px';
+      break;
+      case 'pb':
+         cntt.children[0].style.paddingBottom = value + 'px';
+      break;
+      case 'width':
+         cntt.children[0].children[0].width = value;
+         cntt.children[0].children[0].style.maxWidth = value + 'px';
+      break;
+      case 'alt':
+         cntt.children[0].children[0].alt = value;
+      break;
+      case 'title':
+         cntt.children[0].children[0].title = value;
       break;
    
       default:
@@ -1916,7 +1916,7 @@ function editButton(type, value, col, cnt) {
          cntt.children[0].style.fontFamily = value;
       break;
       case 'size':
-         alert(value)
+         // alert(value)
          cntt.children[0].style.fontSize = value+'px';
       break;
       case 'radius':
@@ -2040,18 +2040,6 @@ function componentToHex(c) {
 function save(campaignId) {
    let body = content.content;
    body = body.toString();
-   body = body.replace("class=\"bulkmailer\"", "");
-   body = body.replace("class=\"_txt\"", "");
-   body = body.replace("class=\"_imglink\"", "");
-   body = body.replace("class=\"_img\"", "");
-   body = body.replace("class=\"default _add_block _row\"", "");
-   body = body.replace("class=\"_txtblock\"", "");
-   body = body.replace("class=\"_content\"", "");
-   body = body.replace("class=\"_button\"", "");
-   body = body.replace("class=\"_divider\"", "");
-   body = body.replace("class=\"_spacer\"", "");
-   body = body.replace("class=\"_table\"", "");
-   body = body.replace("class=\"_add_content\"", "");
    console.log(body);
    if (campaignId != null && campaignId > 0) {
       $.post('scripts/update_draft.php', 

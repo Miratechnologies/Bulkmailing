@@ -121,12 +121,17 @@ class scheduler
 		$mail->FromName = $sender;
 		// $mail->AddAddress("obejor@obejorgroup.com.ng", "Obejor Group");
 		foreach($recipients as $recipient) {
-			$mail->addBCC($recipient["email"], $recipient["name"]);
+			
+			// break emails
+			$emails = explode(",",$recipient["email"]);
+			foreach ($emails as $email) {
+				$mail->addBCC($email, $recipient["name"]);
 
-			// appending the emails with comma
-			$recipientEmail[] = $recipient["email"];
+				// appending the emails with comma
+				$recipientEmail[] = $email;
 
-			$noMailSent++;
+				$noMailSent++;
+			}
 		}
 		$mail->addReplyTo('obejor@obejorgroup.com.ng', 'Obejor Group');
 		$mail->WordWrap = 50;
@@ -138,6 +143,7 @@ class scheduler
 		$body = str_replace("class=\"_imglink\"", "", $body);
 		$body = str_replace("class=\"_img\"", "", $body);
 		$body = str_replace("class=\"default _add_block _row\"", "", $body);
+		$body = str_replace("class=\"_add_block _row\"", "", $body);
 		$body = str_replace("class=\"_txtblock\"", "", $body);
 		$body = str_replace("class=\"_content\"", "", $body);
 		$body = str_replace("class=\"_button\"", "", $body);

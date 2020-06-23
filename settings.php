@@ -6,6 +6,7 @@ include_once 'scripts/restrict_admin.php';
 
 include 'scripts/dbmodel.php';
 $model = new DBModel();
+
 // session_start();
 $_SESSION['USER.ACTIVITY'][] = "settings - " . date("d/m/Y h:i a");
 include 'scripts/log.php';
@@ -85,8 +86,8 @@ if (isset($inputs['update_setting'])) {
 		exit(header('location: settings.php?editpref=false&errmsg=Invalid Preference Value'));
 	}
 	
-	include 'scripts/dbmodel.php';
-	$model = new DBModel();
+	// include 'scripts/dbmodel.php';
+	// $model = new DBModel();
 	$add = $model->updatePreference($prefId,$pref,$options,$value);
 
 	if ($add == true) {
@@ -97,8 +98,8 @@ if (isset($inputs['update_setting'])) {
 
 }
 
-include_once 'scripts/dbmodel.php';
-$model = new DBModel();
+// include_once 'scripts/dbmodel.php';
+// $model = new DBModel();
 $prefs = $model->getAllPreferences();
 if ($prefs['flag'] == true) {
 	$prefEmpty = false;

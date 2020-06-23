@@ -204,19 +204,6 @@ if ($get['flag'] == true) {
    
    </main>
 
-
-   <script>
-      function foo() {
-         var selObj = window.getSelection(); 
-         alert(selObj);
-         var selRange = selObj.getRangeAt(0);
-         // do stuff with the range
-         alert(selRange)
-      }
-   </script>
-
-   
-
    <!-- Modals -->
    <!-- Create Campaign -->
    <div onclick="closing()" class="modal fade" id="start-campaign" tabindex="-1" role="dialog" aria-hidden="true">
@@ -235,11 +222,11 @@ if ($get['flag'] == true) {
             <div class="modal-body" >
                <form action="Javascript:void(0);">
 
-                  <input type="text" name="campaign-name" id="campaign-name" placeholder="Enter Campaign Name" maxlength="20" autofocus class="my-1 form-control">
+                  <input type="text" name="campaign-name" id="campaign-name" placeholder="Enter Campaign Name" maxlength="100" autofocus class="my-1 form-control">
 
-                  <div class="mt-3 mb-0 h5 font-weight-normal text-center">Select Template - <span id="template">Blank</span></div>
-                  <hr>
-
+                  <!-- <div class="mt-3 mb-0 h5 font-weight-normal text-center">Select Template - <span id="template">Blank</span></div>
+                  <hr> -->
+<!-- 
                   <div class="row ">
 
                      <div class="col-4">
@@ -254,7 +241,7 @@ if ($get['flag'] == true) {
                         <button class="btn btn-sm w-100 border" onclick="template('1 : 3 : 1 : 3 : 3 : 1')">1 : 3 : 1 : 3 : 3 : 1</button>
                      </div>
 
-                  </div>
+                  </div> -->
 
                   <button type="submit" onclick="create()" class="my-3 btn btn-md btn-secondary">Submit</button>
                   

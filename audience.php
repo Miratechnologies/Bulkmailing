@@ -101,9 +101,9 @@ if ($audiences['flag'] == true) {
 
 						<button type="submit" class="btn btn-sm obejor-bg-dark text-light my-2 float-right"><span class="fa fa-plus"></span> Add Audience</button>
 					</form>
-				
+
+					<div class="clearfix"></div>
 				</div>
-				
 				<div class="table-responsive">
 
 				<?php 
@@ -123,6 +123,8 @@ if ($audiences['flag'] == true) {
 						";
 					}
 				?>
+
+				<div class="table-responsive">
 
 					<table class="table table-bordered text-center text-secondary">
 						<thead class="obejor-text-dark">
@@ -152,7 +154,11 @@ if ($audiences['flag'] == true) {
 											<td>{$aud['classification']}</td>
 											<td>{$aud['subscription_status']}</td>
 											<td>
-												<button class='btn btn-sm obejor-bg-dark text-light' onclick='removeAudience({$aud['audience_id']})'><span class='fa fa-trash'></span> Remove</button>
+												<div class='btn-group'>
+													<button data-toggle='modal' data-target='#edit-audience' class='btn btn-sm btn-secondary text-light' onclick=\"loadAudience({$aud['audience_id']},'{$aud['firstname']}','{$aud['lastname']}','{$aud['email']}','{$aud['telephone']}','{$aud['subscription_status']}');\" title='Edit'><span class='fa fa-edit'></span></button>
+													
+													<button class='btn btn-sm btn-danger text-light' onclick='removeAudience({$aud['audience_id']})' title='Remove'><span class='fa fa-trash'></span></button>
+												</div>
 											</td>
 										</tr>";
 
@@ -174,6 +180,48 @@ if ($audiences['flag'] == true) {
 		</section>
 
 	</main>
+
+	<!-- Create Campaign -->
+   <div class="modal fade" id="edit-audience" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-md" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h4 class="modal-title">
+                  Edit Audience
+               </h4>
+
+               <button type="button" id="close-start-campaign" class="d-none float-left close" data-dismiss="modal" data-toggle="start-campaign" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+
+            <div class="modal-body" >
+               <form action="Javascript:void(0);">
+
+						<input type="hidden" name="eid" id="eid" value="">
+
+                  <input type="text" name="efirstname" id="efirstname" placeholder="Enter First Name" maxlength="20" class="my-1 form-control"/>
+
+						<input type="text" name="elastname" id="elastname" placeholder="Enter Last Name" maxlength="20" class="my-1 form-control"/>
+
+						<input type="text" name="eemail" id="eemail" placeholder="Enter Email" maxlength="255" class="my-1 form-control"/>
+
+						<input type="text" name="etelephone" id="etelephone" placeholder="Enter Telephone" maxlength="255" class="my-1 form-control"/>
+
+						<select name="estatus" id="estatus" title="Subscription Status" class="my-1 form-control">
+							<option value="SUBSCRIBED">SUBSCIBED</option>
+							<option value="UNSUBSCRBD">UNSUBSCRIBE</option>
+						</select>
+
+                  <button type="submit" onclick="updateAudience()" class="my-3 btn btn-md btn-secondary">Submit</button>
+                  
+               </form>
+            </div>
+
+         </div>
+      </div>
+   </div>
+
 
 	<?php include 'footer.php'; ?>
 

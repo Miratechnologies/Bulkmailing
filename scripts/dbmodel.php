@@ -36,6 +36,18 @@ class DBModel extends DBConnection{
         }
     }
 
+    public function updateAudience($audienceId, $firstname, $lastname, $email, $telephone, $status) {
+        $sql = "UPDATE audience_tbl SET firstname = ?, lastname = ?, email = ?, telephone = ?, subscription_status = ? WHERE audience_id = $audienceId";
+        $res = $this->conn->prepare($sql);
+        $res->bind_param("sssss",$firstname, $lastname, $email, $telephone, $status);
+        $res = $res->execute();
+        if ($res === true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function unSubscribeAudience($email) {
         $sql = "UPDATE audience_tbl SET subscription_status = 'UNSUBSCRBD' WHERE email = ?";
         $res = $this->conn->prepare($sql);
@@ -94,8 +106,8 @@ class DBModel extends DBConnection{
         }
     }
 
-    public function checkAudienceExist($email, $telephone) {
-        $sql = "SELECT * FROM audience_tbl WHERE email = '$email' AND telephone = '$telephone' ";
+    public function checkAudienceExist($email) {
+        $sql = "SELECT * FROM audience_tbl WHERE email LIKE '$email' ";
         $res = $this->conn->query($sql);
         if ($res->num_rows > 0) {
             return true;

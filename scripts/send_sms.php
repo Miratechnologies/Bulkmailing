@@ -2,7 +2,7 @@
 //send_mail.php
 
 
-function sendSMS($user,$sender,$recipients,$messg){
+function sendSMSOld($user,$sender,$recipients,$messg){
 
 	$postdata = "smsuser=". $user ."&sender=".$sender."&recipients=".$recipients."&messg=".$messg;
 	$ch = curl_init();
@@ -15,6 +15,43 @@ function sendSMS($user,$sender,$recipients,$messg){
 	curl_exec($ch);
 	curl_close($ch);
 	
+}
+
+function sendSMS($recipients,$msg) {
+	// {
+	// 	"account": {
+	// 	  "password": "string",
+	// 	  "systemId": "string"
+	// 	},
+	// 	"destinations": [
+	// 	  "string"
+	// 	],
+	// 	"src": "string",
+	// 	"text": "string"
+	// }
+
+
+	$payload = [];
+
+	$payload["account"] = [
+		"password" => "GpYt87KHK",
+		"systemId" => "NG.201.2014"
+	];
+	$payload["destinations"] = $recipients;
+	$payload["src"] = "ISWTest";
+	$payload["text"] = $msg;
+
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, "https://sms.vanso.com/rest/sms/submit/bulk");
+	//curl_setopt($ch, CURLOPT_HEADER, 1);
+	curl_setopt ($ch, CURLOPT_FOLLOWLOCATION, 1);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt ($ch, CURLOPT_POST, 1);
+	curl_setopt ($ch, CURLOPT_POSTFIELDS, $payload);
+	curl_exec($ch);
+	curl_close($ch);
+
+	// return json_encode($payload);
 }
 
 
@@ -39,10 +76,11 @@ if(isset($_POST['send_sms']))
 	}
 	
 	// implode with comma
-	$recipientTelephone = implode(",",$recipientTelephone);
+	// $recipientTelephone = implode(",",$recipientTelephone);
+	// $recipientTelephone
 
 	// try sending sms
-	sendSMS("obejor",$sender,$recipientTelephone,$body);
+	sendSMS($recipientTelephone,$body);
 
 	include 'dbmodel.php';
 	$model = new DBModel();

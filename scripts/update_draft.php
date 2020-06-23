@@ -9,7 +9,7 @@
    include 'dbmodel.php';
    $model = new DBModel();
    // add the template to the draft
-   $add = $model->updateDraft($body, $id);
+   $add = $model->updateDraft(htmlentities($body), $id);
 
    if ($add === true) {
       exit(json_encode([

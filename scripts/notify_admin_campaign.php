@@ -41,6 +41,7 @@ if(isset($_POST['send_email']))
 	$body = str_replace("class=\"_imglink\"", "", $body);
 	$body = str_replace("class=\"_img\"", "", $body);
 	$body = str_replace("class=\"default _add_block _row\"", "", $body);
+	$body = str_replace("class=\"_add_block _row\"", "", $body);
 	$body = str_replace("class=\"_txtblock\"", "", $body);
 	$body = str_replace("class=\"_content\"", "", $body);
 	$body = str_replace("class=\"_button\"", "", $body);

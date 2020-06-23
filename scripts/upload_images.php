@@ -10,7 +10,7 @@ if(isset($_POST["uploadImage"])) {
    $imageName = $_POST['image_name'];
    $validation = new Validation();
 
-   if ($validation->validateName($imageName,1,50) == false) {
+   if ($validation->validateText($imageName) == false || strlen($imageName) < 1 || strlen($imageName) > 50) {
       exit(header("location: ../images.php?status=error"));
    } else {
       $imageName = $validation->sanitize($imageName);
