@@ -69,7 +69,7 @@ if (isset($_GET['action']) && $_GET['action'] == "send") {
 					$noMailSent++;
 				}
 			}
-			$mail->addReplyTo('bulkmailer@obejorgroup.com.ng', 'Obejor Group');
+			$mail->addReplyTo('obejor@obejorgroup.com.ng', 'Obejor Group');
 			$mail->WordWrap = 50;
 			$mail->IsHTML(true);
 			$mail->Subject = $subject;
